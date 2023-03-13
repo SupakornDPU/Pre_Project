@@ -1,0 +1,75 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.row img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.w3-top {
+    position: sticky;
+}
+
+.w3-bar {
+    background-color: #272829;
+    color: white;
+    padding: 10px;
+}
+
+.home {
+    max-width: 100%;
+    margin: auto;
+    width: 100%;
+    min-height: 640px;
+    padding: 0 5rem;
+    background-image: url("https://www.refun.com/wp-content/uploads/2019/08/pic001.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.home-text h2 {
+    font-size: 50px;
+    font-weight: bolder;
+    margin-top: 500px;
+}
+
+.home-text {
+    color: #fff;
+}
+
+.p-img  {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+.grid-product__meta {
+    position: relative;
+    padding: 10px 0 6px 0;
+    text-align: center;
+    font-weight: 500;
+}
+
+.logo-img {
+    display: block;
+    /* width: 50px;
+    height: 50px; */
+    object-fit: fill;
+}
+
+.block-logo {
+    width: 80px;
+    height: 80px;
+}
+
+.block-logo img {
+    height: 100%;
+    width: 100%;
+    object-fit: fill;
+}
