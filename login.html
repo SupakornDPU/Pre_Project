@@ -24,39 +24,39 @@
       .w3-bar {
          background-color: #272829;
          color: white;
-         padding: 20px;
       }
    </style>
 </head>
 
 <body>
-   <!-- Navbar -->
+   <!-- !Navbar -->
    <div class="w3-top">
       <div class="w3-bar w3-card" id="myNavbar">
-         <div class="w3-large my-2 d-flex justify-content-between align-content-center">
-            <div class="w3-hide-small">
-               <a href="#home" class="w3-bar-item w3-button w3-wide">LOGO</a>
+         <div class="w3-large d-flex justify-content-between align-items-center text-center">
+            <div class="w3-hide-small w3-hide-medium">
+               <a href="index.html" class="w3-bar-item w3-button w3-wide block-logo">
+                  <img src="img/LOGO.png" alt="" srcset="" class="logo-img">
+               </a>
             </div>
-            <div class="w3-hide-small">
-               <a href="#about" class="w3-bar-item w3-button">ABOUT</a>
-               <a href="#team" class="w3-bar-item w3-button"><i class="fa fa-user"></i> TEAM</a>
-               <a href="#work" class="w3-bar-item w3-button"><i class="fa fa-th"></i> WORK</a>
-               <a href="#pricing" class="w3-bar-item w3-button"><i class="fa fa-usd"></i> PRICING</a>
+            <div class="w3-hide-small w3-hide-medium">
+               <a href="index.html" class="w3-bar-item w3-button"> HOME</a>
+               <a href="#team" class="w3-bar-item w3-button"> ABOUT</a>
+               <a href="#work" class="w3-bar-item w3-button"><i class="fa fa-th"></i> SERVICE POINT</a>
                <a href="#contact" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i> CONTACT</a>
             </div>
-            <div class="w3-hide-small">
-               <a href="#home" class="w3-bar-item w3-button w3-wide">LOGO</a>
+            <div class="w3-hide-small w3-hide-medium">
+               <a href="login.html" class="w3-bar-item w3-button w3-wide"><i class="fa fa-user"></i>LOGIN</a>
+               <a href="register.html" class="w3-bar-item w3-button w3-wide"><i class="fa fa-user"></i>REGISTER</a>
             </div>
          </div>
 
          <!-- Hide right-floated links on small screens and replace them with a menu icon -->
-         <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium"
+         <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large"
             onclick="w3_open()">
             <i class="fa fa-bars"></i>
          </a>
       </div>
    </div>
-   <!-- Navbar -->
 
    <!-- Sidebar on small screens when clicking the menu icon -->
    <nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large"
@@ -72,7 +72,7 @@
    <!-- !Navbar -->
 
    <!-- !Form Login -->
-   <div class="container" style="margin-top: 250px;">
+   <div class="container" style="margin-top: 250px; margin-bottom: 250px;">
       <form action="">
          <div class="d-flex justify-content-center align-items-center mb-5">
             <h1 style="font-weight: 500;">LOGIN</h1>
@@ -108,32 +108,10 @@
    </div>
    <!-- !Form Login -->
 
-   <script>
-      // Modal Image Gallery
-      function onClick(element) {
-         document.getElementById("img01").src = element.src;
-         document.getElementById("modal01").style.display = "block";
-         var captionText = document.getElementById("caption");
-         captionText.innerHTML = element.alt;
-      }
+   <!-- !Footer -->
+   <footer-component></footer-component>
 
-
-      // Toggle between showing and hiding the sidebar when clicking the menu icon
-      var mySidebar = document.getElementById("mySidebar");
-
-      function w3_open() {
-         if (mySidebar.style.display === 'block') {
-            mySidebar.style.display = 'none';
-         } else {
-            mySidebar.style.display = 'block';
-         }
-      }
-
-      // Close the sidebar with the close button
-      function w3_close() {
-         mySidebar.style.display = "none";
-      }
-   </script>
+   <script src="JS/script.js"></script>
 </body>
 
 </html>

@@ -20,38 +20,17 @@
       div .form-check {
          margin: 5px 0;
       }
+      a{
+         text-decoration:none;  
+         color: black;
+         font-weight: 500;
+      }
    </style>
 </head>
 
 <body>
    <!-- !Navbar -->
-   <div class="w3-top">
-      <div class="w3-bar w3-card" id="myNavbar">
-         <div class="w3-large d-flex justify-content-between align-items-center text-center">
-            <div class="w3-hide-small w3-hide-medium">
-               <a href="#home" class="w3-bar-item w3-button w3-wide block-logo">
-                  <img src="img/LOGO.png" alt="" srcset="" class="logo-img">
-               </a>
-            </div>
-            <div class="w3-hide-small w3-hide-medium">
-               <a href="#about" class="w3-bar-item w3-button"> HOME</a>
-               <a href="#team" class="w3-bar-item w3-button"> ABOUT</a>
-               <a href="#work" class="w3-bar-item w3-button"><i class="fa fa-th"></i> SERVICE POINT</a>
-               <a href="#contact" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i> CONTACT</a>
-            </div>
-            <div class="w3-hide-small w3-hide-medium">
-               <a href="#home" class="w3-bar-item w3-button w3-wide"><i class="fa fa-user"></i>LOGIN</a>
-               <a href="#home" class="w3-bar-item w3-button w3-wide"><i class="fa fa-user"></i>REGISTER</a>
-            </div>
-         </div>
-
-         <!-- Hide right-floated links on small screens and replace them with a menu icon -->
-         <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large"
-            onclick="w3_open()">
-            <i class="fa fa-bars"></i>
-         </a>
-      </div>
-   </div>
+   <navbar-component></navbar-component>
 
    <!-- Sidebar on small screens when clicking the menu icon -->
    <nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-large"
@@ -68,7 +47,7 @@
    <Section class="home" id="home" style="margin-bottom: 5rem;">
       <div class="row d-flex justify-content-center align-items-center text-center">
          <div class="col-md-6 home-text">
-            <h2>Refun Machine</h2>
+            <h2>SHOP</h2>
          </div>
       </div>
    </Section>
@@ -120,8 +99,8 @@
                      <img src="https://cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Loyalty-Long-Sleeve-Shirt---Multicolor-1663598677_600x.jpg?v=1673742975" alt="">
                   </div>
                   <div class="grid-product__meta">
-                     <h6>GBRS Group Loyalty Long Sleeve Shirt - Multicolor</h6>
-                     <p>฿ 1,200.00</p>
+                     <a href="Product_Details/product_1.html" class="">GBRS Group Loyalty Long Sleeve Shirt - Multicolor</a>
+                     <p>฿ 12,000</p>
                   </div>
                </div>
 
@@ -130,8 +109,8 @@
                      <img src="//cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Patriotism-Long-Sleeve-Shirt-1663599156_600x.jpg?v=1673742895" alt="">
                   </div>
                   <div class="grid-product__meta">
-                     <h6>GBRS Group Loyalty Long Sleeve Shirt - Multicolor</h6>
-                     <p>฿ 1,200.00</p>
+                     <a href="Product_Details/product_1.html" class="">GBRS Group Loyalty Long Sleeve Shirt - Multicolor</a>
+                     <p>฿ 12,000</p>
                   </div>
                </div>
 
@@ -140,8 +119,8 @@
                      <img src="//cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Loyalty-Pullover-Hoodie---Multicolor-1663598921_600x.jpg?v=1673743061" alt="">
                   </div>
                   <div class="grid-product__meta">
-                     <h6>GBRS Group Loyalty Long Sleeve Shirt - Multicolor</h6>
-                     <p>฿ 1,200.00</p>
+                     <a href="Product_Details/product_1.html" class="">GBRS Group Loyalty Long Sleeve Shirt - Multicolor</a>
+                     <p>฿ 12,000</p>
                   </div>
                </div>
 
@@ -150,8 +129,8 @@
                      <img src="//cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-x-Tribe-Sk8z-War-Crimes-Long-Sleeve-Shirt-1673039608_7c6d9719-0d71-4834-9b7c-be342f36edbf_600x.png?v=1673040800" alt="">
                   </div>
                   <div class="grid-product__meta">
-                     <h6>GBRS Group Loyalty Long Sleeve Shirt - Multicolor</h6>
-                     <p>฿ 1,200.00</p>
+                     <a href="Product_Details/product_1.html" class="">GBRS Group Loyalty Long Sleeve Shirt - Multicolor</a>
+                     <p>฿ 12,000</p>
                   </div>
                </div>
 
@@ -163,8 +142,8 @@
                      <img src="//cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Burn-the-Ships-Tank-1676340831_e11e491d-7695-44c6-b523-17e8917ec6cf_600x.jpg?v=1676409480" alt="">
                   </div>
                   <div class="grid-product__meta">
-                     <h6>GBRS Group Loyalty Long Sleeve Shirt - Multicolor</h6>
-                     <p>฿ 1,200.00</p>
+                     <a href="Product_Details/product_1.html" class="">GBRS Group Loyalty Long Sleeve Shirt - Multicolor</a>
+                     <p>฿ 12,000</p>
                   </div>
                </div>
 
@@ -173,8 +152,8 @@
                      <img src="//cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Burn-the-Ships-Short-Sleeve-Shirt-1676340482_0bb2d4a3-42d2-4cd1-a925-3f5a4a8c4c3b_600x.jpg?v=1676409437" alt="">
                   </div>
                   <div class="grid-product__meta">
-                     <h6>GBRS Group Loyalty Long Sleeve Shirt - Multicolor</h6>
-                     <p>฿ 1,200.00</p>
+                     <a href="Product_Details/product_1.html" class="">GBRS Group Loyalty Long Sleeve Shirt - Multicolor</a>
+                     <p>฿ 12,000</p>
                   </div>
                </div>
 
@@ -183,8 +162,8 @@
                      <img src="//cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Burn-the-Ships-Long-Sleeve-Shirt-1676340144_5e0de6c3-7451-4a12-aee6-b137433777d2_600x.jpg?v=1676409399" alt="">
                   </div>
                   <div class="grid-product__meta">
-                     <h6>GBRS Group Loyalty Long Sleeve Shirt - Multicolor</h6>
-                     <p>฿ 1,200.00</p>
+                     <a href="Product_Details/product_1.html" class="">GBRS Group Loyalty Long Sleeve Shirt - Multicolor</a>
+                     <p>฿ 12,000</p>
                   </div>
                </div>
 
@@ -193,8 +172,8 @@
                      <img src="//cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-x-Tribe-Sk8z-War-Crimes-Pullover-Hoodie-1673039640_1e68ff06-3ee2-4e9b-a231-505d934c51d4_600x.png?v=1673040712" alt="">
                   </div>
                   <div class="grid-product__meta">
-                     <h6>GBRS Group Loyalty Long Sleeve Shirt - Multicolor</h6>
-                     <p>฿ 1,200.00</p>
+                     <a href="Product_Details/product_1.html" class="">GBRS Group Loyalty Long Sleeve Shirt - Multicolor</a>
+                     <p>฿ 12,000</p>
                   </div>
                </div>
             </div>
@@ -202,48 +181,9 @@
       </div>
    </div>
 
-   <!-- ! Footer -->
-   <footer class="w3-center w3-black w3-padding-64 mt-5">
-      <a href="index.html" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the
-         top</a>
-      <div class="w3-xlarge w3-section">
-         <i class="fa fa-facebook-official w3-hover-opacity"></i>
-         <i class="fa fa-instagram w3-hover-opacity"></i>
-         <i class="fa fa-snapchat w3-hover-opacity"></i>
-         <i class="fa fa-pinterest-p w3-hover-opacity"></i>
-         <i class="fa fa-twitter w3-hover-opacity"></i>
-         <i class="fa fa-linkedin w3-hover-opacity"></i>
-      </div>
-      <p class="w3-small">This website was made with W3schools Spaces. Make your own free website today!</p>
-      <a class="w3-button w3-round-xxlarge w3-small w3-light-grey w3-margin-bottom"
-         href="https://www.w3schools.com/spaces" target="_blank">Start now</a>
-   </footer>
+   <!-- !Footer -->
+   <footer-component></footer-component>
 
-   <script>
-      // Modal Image Gallery
-      function onClick(element) {
-         document.getElementById("img01").src = element.src;
-         document.getElementById("modal01").style.display = "block";
-         var captionText = document.getElementById("caption");
-         captionText.innerHTML = element.alt;
-      }
-
-      // Toggle between showing and hiding the sidebar when clicking the menu icon
-      var mySidebar = document.getElementById("mySidebar");
-
-      function w3_open() {
-         if (mySidebar.style.display === 'block') {
-            mySidebar.style.display = 'none';
-         } else {
-            mySidebar.style.display = 'block';
-         }
-      }
-
-      // Close the sidebar with the close button
-      function w3_close() {
-         mySidebar.style.display = "none";
-      }
-   </script>
+   <script src="JS/script.js"></script>
 </body>
-
 </html>
