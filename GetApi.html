@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>GET API</title>
+
+   <!-- CDN -->
+   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+</head>
+
+<body>
+   <h1>Supakorn Dongkew</h1>
+
+   <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
+      import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-firestore.js";
+      
+      const firebaseConfig = {
+         apiKey: "AIzaSyCODow7HLMRU3ik_9glYxoxjE2R6prKjq8",
+         authDomain: "recycle-machine-23716.firebaseapp.com",
+         projectId: "recycle-machine-23716",
+         storageBucket: "recycle-machine-23716.appspot.com",
+         messagingSenderId: "715253109818",
+         appId: "1:715253109818:web:8dae7aa5ed3ada676e1103",
+         measurementId: "G-DEQYWJ115S"
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const db = getFirestore(app);
+
+      async function getUser(db) {
+         const useCol = collection(db, 'user')
+         // เก็บกลุ่มของ Document ทั้งหมดใน Collection ที่เราเลือก await คือ รอให้ดึงข้อมูลครบก่อนถึงจะสามารถไปทำงานอย่างอื่นได้่
+         const userSnapshot = await getDocs(useCol)
+         return userSnapshot
+      }
+
+      // ดึงกลุ่มข้อมูลเก็บไว้ในตัวแปร data
+      const data = await getUser(db);
+      console.log(data);
+      
+   </script>
+</body>
+
+</html>

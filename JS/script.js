@@ -1,115 +1,94 @@
-class NavBar extends HTMLElement {
-   constructor () {
-      super();
+// ! Quantity buttons
+const plus = document.querySelector(".plus"); // select plus button
+const minus = document.querySelector(".minus"); // select minus button
+const num = document.querySelector(".num"); // select number
+let a = 1; // เป็นการประกาศตัวแปรแบบสามารถแก้ไขข้อมูลของตัวแปรได้
+
+plus.addEventListener("click", () => {
+   a++;
+   a = a++;
+   // console.log(a);
+   num.innerText = a;
+})
+minus.addEventListener("click", () => {
+   if (a > 1) {
+      a--;
+      a = a--;
    }
-
-   connectedCallback () {
-      this.innerHTML = `<div class="w3-top">
-      <div class="w3-bar w3-card" id="myNavbar">
-         <div class="w3-large d-flex justify-content-between align-items-center text-center">
-            <div class="w3-hide-small w3-hide-medium">
-               <a href="index.html" class="w3-bar-item w3-button w3-wide block-logo">
-                  <img src="img/LOGO.png" alt="" srcset="" class="logo-img">
-               </a>
-            </div>
-            <div class="w3-hide-small w3-hide-medium">
-               <a href="index.html" class="w3-bar-item w3-button"> HOME</a>
-               <a href="shop.html" class="w3-bar-item w3-button"> SHOP</a>
-               <a href="#work" class="w3-bar-item w3-button"><i class="fa fa-th"></i> SERVICE POINT</a>
-               <a href="#contact" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i> CONTACT</a>
-            </div>
-            <div class="w3-hide-small w3-hide-medium">
-               <a href="login.html" class="w3-bar-item w3-button w3-wide"><i class="fa fa-user"></i>LOGIN</a>
-               <a href="register.html" class="w3-bar-item w3-button w3-wide"><i class="fa fa-user"></i>REGISTER</a>
-            </div>
-         </div>
-
-         <!-- Hide right-floated links on small screens and replace them with a menu icon -->
-         <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large"
-            onclick="w3_open()">
-            <i class="fa fa-bars"></i>
-         </a>
-      </div>
-   </div>`
-   }
-}
-class Footer extends HTMLElement {
-   constructor () {
-      super();
-   }
-
-   connectedCallback () {
-      this.innerHTML = `<!-- Footer. This section contains an ad for W3Schools Spaces. You can leave it to support us. -->
-      <footer class="w3-center w3-black w3-padding-64" style="margin-top: 10rem;>
-         <a href="index.html" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the
-            top</a>
-         <div class="w3-xlarge w3-section">
-            <i class="fa fa-facebook-official w3-hover-opacity"></i>
-            <i class="fa fa-instagram w3-hover-opacity"></i>
-            <i class="fa fa-snapchat w3-hover-opacity"></i>
-            <i class="fa fa-pinterest-p w3-hover-opacity"></i>
-            <i class="fa fa-twitter w3-hover-opacity"></i>
-            <i class="fa fa-linkedin w3-hover-opacity"></i>
-         </div>
-         <p class="w3-small">This website was made with W3schools Spaces. Make your own free website today!</p>
-         <a class="w3-button w3-round-xxlarge w3-small w3-light-grey w3-margin-bottom"
-            href="https://www.w3schools.com/spaces" target="_blank">Start now</a>
-      </footer>`
-   }
-}
-
-customElements.define('navbar-component', NavBar);
-customElements.define('footer-component', Footer);
-
-// Modal Image Gallery
-function onClick(element) {
-   document.getElementById("img01").src = element.src;
-   document.getElementById("modal01").style.display = "block";
-   var captionText = document.getElementById("caption");
-   captionText.innerHTML = element.alt;
-}
-
-
-// Toggle between showing and hiding the sidebar when clicking the menu icon
-var mySidebar = document.getElementById("mySidebar");
-
-function w3_open() {
-   if (mySidebar.style.display === 'block') {
-      mySidebar.style.display = 'none';
-   } else {
-      mySidebar.style.display = 'block';
-   }
-}
-
-// Close the sidebar with the close button
-function w3_close() {
-   mySidebar.style.display = "none";
-}
-
-let items = document.querySelectorAll('.carousel .carousel-item')
-
-items.forEach((el) => {
-   const minPerSlide = 4
-   let next = el.nextElementSibling
-   for (var i=1; i<minPerSlide; i++) {
-      if (!next) {
-      // wrap carousel by using first child
-      next = items[0]
-      }
-      let cloneChild = next.cloneNode(true)
-      el.appendChild(cloneChild.children[0])
-      next = next.nextElementSibling
-   }
+   // console.log(a);
+   num.innerText = a;
 })
 
-// // !ScrollTrigger
-// gsap.registerPlugin(ScrollTrigger);
+// ! Cart side nav
+   /* Set the width of the side navigation to 250px */
+function openNav() {
+   document.getElementById("mySidenav").style.width = "380px";
+   document.body.style.backgroundColor = "rgba(0,0,0,0.5)";
+   document.getElementById("pagecontent").style.pointerEvents = "none";
+}
 
-//    gsap.to(".img-block", {
-//       duration: 1.5,
-//       xPercent: 100,
-//       scrollTrigger: {
-//          trigger: ".img-block",
-//          start: 700,
-//       }
-//    });
+   /* Set the width of the side navigation to 0 */
+function closeNav() {
+   document.getElementById("mySidenav").style.width = "0";
+   document.body.style.backgroundColor = "white";
+   document.getElementById("pagecontent").style.pointerEvents = "auto";
+}
+
+const redeem = document.querySelector("#redeem");
+const productName = document.querySelector("#productName").innerHTML;
+const productPoint = document.querySelector("#productPoint").innerHTML;
+const radioButtons = document.querySelectorAll('input[name="size"]');
+
+redeem.addEventListener("click", function () {
+
+   let selectedSize;
+   for (const radioButton of radioButtons) {
+      if (radioButton.checked) {
+         selectedSize = radioButton.value;
+         break;
+      }
+   }
+   let html = "";
+   html += `
+   <div class="row" style="margin: 0 auto;">
+   <hr>
+      <div class="col-6 d-flex justify-content-center align-items-center">
+         <div class="img-cart">
+            <img src="https://cdn.shopify.com/s/files/1/0786/3209/products/Camp_800x.png?v=1680027389" alt="">
+         </div>
+      </div>
+      <div class="col-6">
+         <div class="d-block">
+            <p style="font-size: smaller;font-weight: bold;">${productName}</p>
+            <p style="font-size: smaller;font-weight: bold;">SIZE : ${selectedSize}</p>
+            <p style="font-size: smaller;font-weight: bold;">${productPoint}</p>
+         </div>
+         <div class="row">
+            <div class="col-6" style="width: 90px;">
+               <h5>AMOUNT</h5>
+            </div>
+            <div class="col-6 text-end" style="width: 90px;">
+               <h5>${a}</h5>
+            </div>
+         </div>
+      </div>
+      <hr class="my-2">
+   </div>
+   <div class="row">
+      <div class="fixed-bottomside">
+         <hr>
+         <div class="row my-3 px-5">
+            <div class="col-6 text-start" style="width: 150px;">
+               <h5 style="font-weight: bold;">SUB TOTAL</h5>
+            </div>
+            <div class="col-6 text-end" style="width: 150px;">
+               <h5 style="font-weight: bold;">${a*parseInt(productPoint)} P.</h5>
+            </div>
+         </div>
+         <div class="col-12 d-flex justify-content-center" style="width: 380px;">
+            <a type="button" class="btn btn-danger btn-lg btn-checkout">CHECKOUT NOW</a>
+         </div>
+      </div>
+   </div>`;
+   document.getElementById("cartOrder").innerHTML = html;
+});
