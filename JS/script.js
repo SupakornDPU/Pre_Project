@@ -48,10 +48,11 @@ redeem.addEventListener("click", function () {
          break;
       }
    }
+
    let html = "";
    html += `
-   <div class="row" style="margin: 0 auto;">
-   <hr>
+   
+   <hr class="mt-2">
       <div class="col-6 d-flex justify-content-center align-items-center">
          <div class="img-cart">
             <img src="https://cdn.shopify.com/s/files/1/0786/3209/products/Camp_800x.png?v=1680027389" alt="">
@@ -64,31 +65,92 @@ redeem.addEventListener("click", function () {
             <p style="font-size: smaller;font-weight: bold;">${productPoint}</p>
          </div>
          <div class="row">
-            <div class="col-6" style="width: 90px;">
+            <div class="col-6">
                <h5>AMOUNT</h5>
             </div>
-            <div class="col-6 text-end" style="width: 90px;">
+            <div class="col-6 text-end">
                <h5>${a}</h5>
             </div>
          </div>
-      </div>
-      <hr class="my-2">
-   </div>
-   <div class="row">
-      <div class="fixed-bottomside">
-         <hr>
-         <div class="row my-3 px-5">
-            <div class="col-6 text-start" style="width: 150px;">
-               <h5 style="font-weight: bold;">SUB TOTAL</h5>
+         <div class="row">
+            <div class="col-6">
+               <h5>TOTAL</h5>
             </div>
-            <div class="col-6 text-end" style="width: 150px;">
-               <h5 style="font-weight: bold;">${a*parseInt(productPoint)} P.</h5>
+            <div class="col-6 text-end">
+               <p style="font-weight: bold;">${a*parseInt(productPoint)} P.</p>
             </div>
-         </div>
-         <div class="col-12 d-flex justify-content-center" style="width: 380px;">
-            <a type="button" class="btn btn-danger btn-lg btn-checkout">CHECKOUT NOW</a>
          </div>
       </div>
    </div>`;
-   document.getElementById("cartOrder").innerHTML = html;
+
+   var newNode = document.createElement('div');
+   newNode.className = 'row';
+   newNode.innerHTML = html;
+   document.getElementById("cartOrder").appendChild(newNode);
 });
+
+// redeem.addEventListener("click", function () {
+
+//    let selectedSize;
+//    for (const radioButton of radioButtons) {
+//       if (radioButton.checked) {
+//          selectedSize = radioButton.value;
+//          break;
+//       }
+//    }
+
+//    // Get the product price and quantity
+//    const productPrice = parseFloat(productPoint.replace("$", ""));
+//    const quantity = parseInt(a);
+
+//    // Calculate the total price for this item
+//    const totalPrice = productPrice * quantity;
+
+//    // Add the total price to a running total
+//    let overallTotalPrice = 0;
+//    let html = "";
+//    html += `
+//    <hr class="mt-2">
+//    <div class="row">
+//       <div class="col-6 d-flex justify-content-center align-items-center">
+//          <div class="img-cart">
+//             <img src="https://cdn.shopify.com/s/files/1/0786/3209/products/Camp_800x.png?v=1680027389" alt="">
+//          </div>
+//       </div>
+//       <div class="col-6">
+//          <div class="d-block">
+//             <p style="font-size: smaller;font-weight: bold;">${productName}</p>
+//             <p style="font-size: smaller;font-weight: bold;">SIZE : ${selectedSize}</p>
+//             <p style="font-size: smaller;font-weight: bold;">${productPoint}</p>
+//          </div>
+//          <div class="row">
+//             <div class="col-6">
+//                <h5>AMOUNT</h5>
+//             </div>
+//             <div class="col-6 text-end">
+//                <h5>${a}</h5>
+//             </div>
+//          </div>
+//          <div class="row">
+//             <div class="col-6">
+//                <h5>TOTAL PRICE</h5>
+//             </div>
+//             <div class="col-6 text-end">
+//                <h5>$${totalPrice.toFixed(2)}</h5>
+//             </div>
+//          </div>
+//       </div>
+//    </div>`;
+
+//    var newNode = document.createElement('div');
+//    newNode.className = 'row';
+//    newNode.innerHTML = html;
+//    document.getElementById("cartOrder").appendChild(newNode);
+
+//    // Add the total price to the overall total
+//    overallTotalPrice += totalPrice;
+
+//    // Display the overall total price
+//    document.getElementById("totalPrice").innerHTML = `$${overallTotalPrice.toFixed(2)}`;
+
+// });

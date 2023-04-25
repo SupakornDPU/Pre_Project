@@ -6,7 +6,7 @@
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>แลกสินค้า</title>
-   
+
    <!-- CSS -->
    <link rel="stylesheet" href="css/main.css">
 
@@ -19,23 +19,147 @@
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
       integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
+   <!-- AOS -->
+   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
    <style>
       .w3-bar {
          background-color: rgba(39, 40, 41, 0.5);
       }
+
       div .form-check {
          margin: 5px 0;
       }
-      a{
-         text-decoration:none;  
+
+      a {
+         text-decoration: none;
          color: black;
          font-weight: 500;
       }
-      .grid-product__meta p{
+
+      .form-check {
+         padding-left: 0;
+      }
+
+      .grid-product__meta p {
          font-weight: 600;
       }
-      .grid-product__meta a{
+
+      .grid-product__meta a {
          font-weight: 500;
+      }
+
+      /* Check Box */
+      @supports (-webkit-appearance: none) or (-moz-appearance: none) {
+         .checkbox-wrapper-13 input[type=checkbox] {
+            --active: #b29f82;
+            --active-inner: #fff;
+            --focus: 2px rgba(39, 94, 254, .3);
+            --border: #BBC1E1;
+            --border-hover: #275EFE;
+            --background: #fff;
+            --disabled: #F6F8FF;
+            --disabled-inner: #E1E6F9;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            height: 21px;
+            outline: none;
+            display: inline-block;
+            vertical-align: top;
+            position: relative;
+            margin: 0;
+            cursor: pointer;
+            border: 1px solid var(--bc, var(--border));
+            background: var(--b, var(--background));
+            transition: background 0.3s, border-color 0.3s, box-shadow 0.2s;
+         }
+
+         .checkbox-wrapper-13 input[type=checkbox]:after {
+            content: "";
+            display: block;
+            left: 0;
+            top: 0;
+            position: absolute;
+            transition: transform var(--d-t, 0.3s) var(--d-t-e, ease), opacity var(--d-o, 0.2s);
+         }
+
+         .checkbox-wrapper-13 input[type=checkbox]:checked {
+            --b: var(--active);
+            --bc: var(--active);
+            --d-o: .3s;
+            --d-t: .6s;
+            --d-t-e: cubic-bezier(.2, .85, .32, 1.2);
+         }
+
+         .checkbox-wrapper-13 input[type=checkbox]:disabled {
+            --b: var(--disabled);
+            cursor: not-allowed;
+            opacity: 0.9;
+         }
+
+         .checkbox-wrapper-13 input[type=checkbox]:disabled:checked {
+            --b: var(--disabled-inner);
+            --bc: var(--border);
+         }
+
+         .checkbox-wrapper-13 input[type=checkbox]:disabled+label {
+            cursor: not-allowed;
+         }
+
+         .checkbox-wrapper-13 input[type=checkbox]:hover:not(:checked):not(:disabled) {
+            --bc: var(--border-hover);
+         }
+
+         .checkbox-wrapper-13 input[type=checkbox]:focus {
+            box-shadow: 0 0 0 var(--focus);
+         }
+
+         .checkbox-wrapper-13 input[type=checkbox]:not(.switch) {
+            width: 21px;
+         }
+
+         .checkbox-wrapper-13 input[type=checkbox]:not(.switch):after {
+            opacity: var(--o, 0);
+         }
+
+         .checkbox-wrapper-13 input[type=checkbox]:not(.switch):checked {
+            --o: 1;
+         }
+
+         .checkbox-wrapper-13 input[type=checkbox]+label {
+            display: inline-block;
+            vertical-align: middle;
+            cursor: pointer;
+            margin-left: 4px;
+         }
+
+         .checkbox-wrapper-13 input[type=checkbox]:not(.switch) {
+            border-radius: 7px;
+         }
+
+         .checkbox-wrapper-13 input[type=checkbox]:not(.switch):after {
+            width: 5px;
+            height: 9px;
+            border: 2px solid var(--active-inner);
+            border-top: 0;
+            border-left: 0;
+            left: 7px;
+            top: 4px;
+            transform: rotate(var(--r, 20deg));
+         }
+
+         .checkbox-wrapper-13 input[type=checkbox]:not(.switch):checked {
+            --r: 43deg;
+         }
+      }
+
+      .checkbox-wrapper-13 * {
+         box-sizing: inherit;
+      }
+
+      .checkbox-wrapper-13 *:before,
+      .checkbox-wrapper-13 *:after {
+         box-sizing: inherit;
       }
    </style>
 </head>
@@ -45,8 +169,8 @@
    <navbar-component></navbar-component>
 
    <!-- Sidebar on small screens when clicking the menu icon -->
-   <nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-large"
-   style="display:none" id="mySidebar">
+   <nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-large" style="display:none"
+      id="mySidebar">
       <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close
          ×</a>
       <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button">ABOUT</a>
@@ -71,148 +195,426 @@
             <div>
                <h6 style="margin: 2rem 0;">STOCK</h6>
                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                  <label class="form-check-label" for="flexCheckDefault">IN STOCK</label>
+                  <div class="checkbox-wrapper-13">
+                     <input id="checkboxStock" type="checkbox">
+                     <label for="checkboxStock">IN STOCK</label>
+                  </div>
                </div>
             </div>
             <hr>
-            <div>
-               <h6>COLLECTION</h6>
-               <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                  <label class="form-check-label" for="flexCheckDefault">CLOTHING</label>
+            <div class="form-check">
+               <div class="checkbox-wrapper-13">
+                  <input id="checkboxShirt" type="checkbox" onclick="myFunction()">
+                  <label for="checkboxShirt">SHIRT</label>
                </div>
-               <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                  <label class="form-check-label" for="flexCheckDefault">COUPON</label>
+            </div>
+            <div class="form-check">
+               <div class="checkbox-wrapper-13">
+                  <input id="checkboxCoupon" type="checkbox" onclick="myFunction()">
+                  <label for="checkboxCoupon">COUPON</label>
                </div>
-               <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                  <label class="form-check-label" for="flexCheckDefault">FOOD & DRINK</label>
+            </div>
+            <div class="form-check">
+               <div class="checkbox-wrapper-13">
+                  <input id="checkboxFoodDrink" type="checkbox" onclick="myFunction()">
+                  <label for="checkboxFoodDrink">FOOD & DRINK</label>
                </div>
             </div>
             <hr>
          </div>
-         <div class="col-md-10">
+
+         <div class="col-md-10" id="product">
             <div class="row mb-5">
                <div class="form-outline">
                   <input type="search" id="form1" class="form-control" placeholder="Type query" aria-label="Search" />
                </div>
             </div>
-            <!-- !Row Product 1 -->
-            <div class="row">
-               <!-- Product -->
-               <div class="col-6 col-md-3">
-                  <div class="p-img">
-                     <a href="product_1.html">
-                        <img src="https://cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Loyalty-Long-Sleeve-Shirt---Multicolor-1663598677_600x.jpg?v=1673742975"
-                        onmouseout="this.src='https://cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Loyalty-Long-Sleeve-Shirt---Multicolor-1663598677_600x.jpg?v=1673742975'"
-                        onmouseover="this.src='https://cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Loyalty-Long-Sleeve-Shirt---Multicolor-1663849196_1800x1800.jpg?v=1678845153'">
-                     </a>
+            <span class="loader" id="loader" style="width: 48px; height: 48px;display: none;"></span>
+            <div id="shirt">
+               <!-- !Row Product 1 -->
+               <div class="row">
+                  <!-- Product -->
+                  <div class="col-6 col-md-3">
+                     <div class="p-img">
+                        <a href="product_1.html">
+                           <img
+                              src="https://cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Loyalty-Long-Sleeve-Shirt---Multicolor-1663598677_600x.jpg?v=1673742975"
+                              onmouseout="this.src='https://cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Loyalty-Long-Sleeve-Shirt---Multicolor-1663598677_600x.jpg?v=1673742975'"
+                              onmouseover="this.src='https://cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Loyalty-Long-Sleeve-Shirt---Multicolor-1663849196_1800x1800.jpg?v=1678845153'">
+                        </a>
+                     </div>
+                     <div class="grid-product__meta">
+                        <a href="product_1.html" class="">GBRS Group Loyalty Long Sleeve Shirt - Multicolor</a>
+                        <p>฿ 12,000</p>
+                     </div>
                   </div>
-                  <div class="grid-product__meta">
-                     <a href="product_1.html" class="">GBRS Group Loyalty Long Sleeve Shirt - Multicolor</a>
-                     <p>฿ 12,000</p>
+
+                  <div class="col-6 col-md-3">
+                     <div class="p-img">
+                        <a href="product_1.html">
+                           <img
+                              src="//cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Patriotism-Long-Sleeve-Shirt-1663599156_600x.jpg?v=1673742895"
+                              onmouseout="this.src='//cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Patriotism-Long-Sleeve-Shirt-1663599156_600x.jpg?v=1673742895'"
+                              onmouseover="this.src='https://cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Patriotism-Long-Sleeve-Shirt-1663599160_1800x1800.jpg?v=1678845311'">
+                        </a>
+                     </div>
+                     <div class="grid-product__meta">
+                        <a href="product_1.html" class="">GBRS Group Loyalty Long Sleeve Shirt - Multicolor</a>
+                        <p>฿ 12,000</p>
+                     </div>
+                  </div>
+
+                  <div class="col-6 col-md-3">
+                     <div class="p-img">
+                        <a href="product_1.html">
+                           <img
+                              src="//cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Loyalty-Pullover-Hoodie---Multicolor-1663598921_600x.jpg?v=1673743061"
+                              onmouseout="this.src='//cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Loyalty-Pullover-Hoodie---Multicolor-1663598921_600x.jpg?v=1673743061'"
+                              onmouseover="this.src='https://cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Loyalty-Pullover-Hoodie---Multicolor-1663598829_1800x1800.jpg?v=1678845263'">
+                        </a>
+                     </div>
+                     <div class="grid-product__meta">
+                        <a href="product_1.html" class="">GBRS Group Loyalty Long Sleeve Shirt - Multicolor</a>
+                        <p>฿ 12,000</p>
+                     </div>
+                  </div>
+
+                  <div class="col-6 col-md-3">
+                     <div class="p-img">
+                        <a href="product_1.html">
+                           <img
+                              src="//cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-x-Tribe-Sk8z-War-Crimes-Long-Sleeve-Shirt-1673039608_7c6d9719-0d71-4834-9b7c-be342f36edbf_600x.png?v=1673040800"
+                              onmouseout="this.src='//cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-x-Tribe-Sk8z-War-Crimes-Long-Sleeve-Shirt-1673039608_7c6d9719-0d71-4834-9b7c-be342f36edbf_600x.png?v=1673040800'"
+                              onmouseover="this.src='https://cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Tattoo-Flash-Long-Sleeve-Shirt-1678723715_90c65e56-2a58-430e-bd60-80b6efb8dc38_1800x1800.jpg?v=1678726733'">
+                        </a>
+                     </div>
+                     <div class="grid-product__meta">
+                        <a href="product_1.html" class="">GBRS Group Loyalty Long Sleeve Shirt - Multicolor</a>
+                        <p>฿ 12,000</p>
+                     </div>
                   </div>
                </div>
 
-               <div class="col-6 col-md-3">
-                  <div class="p-img">
-                     <a href="product_1.html">
-                        <img src="//cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Patriotism-Long-Sleeve-Shirt-1663599156_600x.jpg?v=1673742895"
-                        onmouseout="this.src='//cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Patriotism-Long-Sleeve-Shirt-1663599156_600x.jpg?v=1673742895'"
-                        onmouseover="this.src='https://cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Patriotism-Long-Sleeve-Shirt-1663599160_1800x1800.jpg?v=1678845311'">
-                     </a>
+               <!-- !Row Product 2 -->
+               <div class="row">
+                  <div class="col-6 col-md-3">
+                     <div class="p-img">
+                        <a href="product_1.html">
+                           <img
+                              src="https://cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Instructor-Long-Sleeve-Shirt-1674224996_1800x1800.png?v=1674496050"
+                              onmouseout="this.src='https://cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Instructor-Long-Sleeve-Shirt-1674224996_1800x1800.png?v=1674496050'"
+                              onmouseover="this.src='https://cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Instructor-Long-Sleeve-Shirt-1674225000_1800x1800.png?v=1674496050'">
+                        </a>
+                     </div>
+                     <div class="grid-product__meta">
+                        <a href="product_1.html" class="">GBRS Group Loyalty Long Sleeve Shirt - Multicolor</a>
+                        <p>฿ 12,000</p>
+                     </div>
                   </div>
-                  <div class="grid-product__meta">
-                     <a href="product_1.html" class="">GBRS Group Loyalty Long Sleeve Shirt - Multicolor</a>
-                     <p>฿ 12,000</p>
+
+                  <div class="col-6 col-md-3">
+                     <div class="p-img">
+                        <a href="product_1.html">
+                           <img
+                              src="https://cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Nocturnal-Professionals-Short-Sleeve-Shirt-1657289089_1800x1800.jpg?v=1657289092"
+                              onmouseout="this.src='https://cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Nocturnal-Professionals-Short-Sleeve-Shirt-1657289089_1800x1800.jpg?v=1657289092'"
+                              onmouseover="this.src='https://cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Nocturnal-Professionals-Short-Sleeve-Shirt-1657289095_1800x1800.jpg?v=1657289097'">
+                        </a>
+                     </div>
+                     <div class="grid-product__meta">
+                        <a href="product_1.html" class="">GBRS Group Loyalty Long Sleeve Shirt - Multicolor</a>
+                        <p>฿ 12,000</p>
+                     </div>
+                  </div>
+
+                  <div class="col-6 col-md-3">
+                     <div class="p-img">
+                        <a href="product_1.html">
+                           <img
+                              src="https://cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Tattoo-Flash-Short-Sleeve-Shirt-1678726784_3c4972d9-d404-451a-9881-b4f0cb51e3d5_1800x1800.jpg?v=1678726989"
+                              onmouseout="this.src='https://cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Tattoo-Flash-Short-Sleeve-Shirt-1678726784_3c4972d9-d404-451a-9881-b4f0cb51e3d5_1800x1800.jpg?v=1678726989'"
+                              onmouseover="this.src='https://cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Tattoo-Flash-Short-Sleeve-Shirt-1678726777_fafd8c41-4271-4c18-88d4-6c34d5644119_1800x1800.jpg?v=1678726985'">
+                        </a>
+                     </div>
+                     <div class="grid-product__meta">
+                        <a href="product_1.html" class="">GBRS Group Loyalty Long Sleeve Shirt - Multicolor</a>
+                        <p>฿ 12,000</p>
+                     </div>
+                  </div>
+
+                  <div class="col-6 col-md-3">
+                     <div class="p-img">
+                        <a href="product_1.html">
+                           <img
+                              src="https://cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Loyalty-Long-Sleeve-Shirt---Multicolor-1663598684_1800x1800.jpg?v=1678845192"
+                              onmouseout="this.src='https://cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Loyalty-Long-Sleeve-Shirt---Multicolor-1663598684_1800x1800.jpg?v=1678845192'"
+                              onmouseover="this.src='https://cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Loyalty-Long-Sleeve-Shirt---Multicolor-1663598687_1800x1800.jpg?v=1678845192'">
+                        </a>
+                     </div>
+                     <div class="grid-product__meta">
+                        <a href="product_1.html" class="">GBRS Group Loyalty Long Sleeve Shirt - Multicolor</a>
+                        <p>฿ 12,000</p>
+                     </div>
                   </div>
                </div>
-
-               <div class="col-6 col-md-3">
-                  <div class="p-img">
-                     <a href="product_1.html">
-                        <img src="//cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Loyalty-Pullover-Hoodie---Multicolor-1663598921_600x.jpg?v=1673743061"
-                        onmouseout="this.src='//cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Loyalty-Pullover-Hoodie---Multicolor-1663598921_600x.jpg?v=1673743061'"
-                        onmouseover="this.src='https://cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Loyalty-Pullover-Hoodie---Multicolor-1663598829_1800x1800.jpg?v=1678845263'">
-                     </a>
-                  </div>
-                  <div class="grid-product__meta">
-                     <a href="product_1.html" class="">GBRS Group Loyalty Long Sleeve Shirt - Multicolor</a>
-                     <p>฿ 12,000</p>
-                  </div>
-               </div>
-
-               <div class="col-6 col-md-3">
-                  <div class="p-img">
-                     <a href="product_1.html">
-                        <img src="//cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-x-Tribe-Sk8z-War-Crimes-Long-Sleeve-Shirt-1673039608_7c6d9719-0d71-4834-9b7c-be342f36edbf_600x.png?v=1673040800"
-                        onmouseout="this.src='//cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-x-Tribe-Sk8z-War-Crimes-Long-Sleeve-Shirt-1673039608_7c6d9719-0d71-4834-9b7c-be342f36edbf_600x.png?v=1673040800'"
-                        onmouseover="this.src='https://cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Tattoo-Flash-Long-Sleeve-Shirt-1678723715_90c65e56-2a58-430e-bd60-80b6efb8dc38_1800x1800.jpg?v=1678726733'">
-                     </a>
-                  </div>
-                  <div class="grid-product__meta">
-                     <a href="product_1.html" class="">GBRS Group Loyalty Long Sleeve Shirt - Multicolor</a>
-                     <p>฿ 12,000</p>
-                  </div>
-               </div>
-
             </div>
-            <!-- !Row Product 2 -->
-            <div class="row">
-               <div class="col-6 col-md-3">
-                  <div class="p-img">
-                     <a href="product_1.html">
-                        <img src="https://cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Instructor-Long-Sleeve-Shirt-1674224996_1800x1800.png?v=1674496050"
-                        onmouseout="this.src='https://cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Instructor-Long-Sleeve-Shirt-1674224996_1800x1800.png?v=1674496050'"
-                        onmouseover="this.src='https://cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Instructor-Long-Sleeve-Shirt-1674225000_1800x1800.png?v=1674496050'">
-                     </a>
+
+            <!-- !COUPON -->
+            <div id="coupon">
+               <!-- Row Coupon 1 -->
+               <div class="row" id="coupon">
+                  <!-- Product -->
+                  <div class="col-6 col-md-3">
+                     <div class="p-img">
+                        <a href="product_1.html">
+                           <img
+                              src="https://cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Loyalty-Long-Sleeve-Shirt---Multicolor-1663598677_600x.jpg?v=1673742975"
+                              onmouseout="this.src='https://cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Loyalty-Long-Sleeve-Shirt---Multicolor-1663598677_600x.jpg?v=1673742975'"
+                              onmouseover="this.src='https://cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Loyalty-Long-Sleeve-Shirt---Multicolor-1663849196_1800x1800.jpg?v=1678845153'">
+                        </a>
+                     </div>
+                     <div class="grid-product__meta">
+                        <a href="product_1.html" class="">GBRS Group Loyalty Long Sleeve Shirt - Multicolor</a>
+                        <p>฿ 12,000</p>
+                     </div>
                   </div>
-                  <div class="grid-product__meta">
-                     <a href="product_1.html" class="">GBRS Group Loyalty Long Sleeve Shirt - Multicolor</a>
-                     <p>฿ 12,000</p>
+
+                  <div class="col-6 col-md-3">
+                     <div class="p-img">
+                        <a href="product_1.html">
+                           <img
+                              src="//cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Patriotism-Long-Sleeve-Shirt-1663599156_600x.jpg?v=1673742895"
+                              onmouseout="this.src='//cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Patriotism-Long-Sleeve-Shirt-1663599156_600x.jpg?v=1673742895'"
+                              onmouseover="this.src='https://cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Patriotism-Long-Sleeve-Shirt-1663599160_1800x1800.jpg?v=1678845311'">
+                        </a>
+                     </div>
+                     <div class="grid-product__meta">
+                        <a href="product_1.html" class="">GBRS Group Loyalty Long Sleeve Shirt - Multicolor</a>
+                        <p>฿ 12,000</p>
+                     </div>
+                  </div>
+
+                  <div class="col-6 col-md-3">
+                     <div class="p-img">
+                        <a href="product_1.html">
+                           <img
+                              src="//cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Loyalty-Pullover-Hoodie---Multicolor-1663598921_600x.jpg?v=1673743061"
+                              onmouseout="this.src='//cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Loyalty-Pullover-Hoodie---Multicolor-1663598921_600x.jpg?v=1673743061'"
+                              onmouseover="this.src='https://cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Loyalty-Pullover-Hoodie---Multicolor-1663598829_1800x1800.jpg?v=1678845263'">
+                        </a>
+                     </div>
+                     <div class="grid-product__meta">
+                        <a href="product_1.html" class="">GBRS Group Loyalty Long Sleeve Shirt - Multicolor</a>
+                        <p>฿ 12,000</p>
+                     </div>
+                  </div>
+
+                  <div class="col-6 col-md-3">
+                     <div class="p-img">
+                        <a href="product_1.html">
+                           <img
+                              src="//cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-x-Tribe-Sk8z-War-Crimes-Long-Sleeve-Shirt-1673039608_7c6d9719-0d71-4834-9b7c-be342f36edbf_600x.png?v=1673040800"
+                              onmouseout="this.src='//cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-x-Tribe-Sk8z-War-Crimes-Long-Sleeve-Shirt-1673039608_7c6d9719-0d71-4834-9b7c-be342f36edbf_600x.png?v=1673040800'"
+                              onmouseover="this.src='https://cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Tattoo-Flash-Long-Sleeve-Shirt-1678723715_90c65e56-2a58-430e-bd60-80b6efb8dc38_1800x1800.jpg?v=1678726733'">
+                        </a>
+                     </div>
+                     <div class="grid-product__meta">
+                        <a href="product_1.html" class="">GBRS Group Loyalty Long Sleeve Shirt - Multicolor</a>
+                        <p>฿ 12,000</p>
+                     </div>
                   </div>
                </div>
 
-               <div class="col-6 col-md-3">
-                  <div class="p-img">
-                     <a href="product_1.html">
-                        <img src="https://cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Nocturnal-Professionals-Short-Sleeve-Shirt-1657289089_1800x1800.jpg?v=1657289092"
-                        onmouseout="this.src='https://cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Nocturnal-Professionals-Short-Sleeve-Shirt-1657289089_1800x1800.jpg?v=1657289092'"
-                        onmouseover="this.src='https://cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Nocturnal-Professionals-Short-Sleeve-Shirt-1657289095_1800x1800.jpg?v=1657289097'">
-                     </a>
+               <!-- !Row Coupon 2 -->
+               <div class="row">
+                  <div class="col-6 col-md-3">
+                     <div class="p-img">
+                        <a href="product_1.html">
+                           <img
+                              src="https://cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Instructor-Long-Sleeve-Shirt-1674224996_1800x1800.png?v=1674496050"
+                              onmouseout="this.src='https://cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Instructor-Long-Sleeve-Shirt-1674224996_1800x1800.png?v=1674496050'"
+                              onmouseover="this.src='https://cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Instructor-Long-Sleeve-Shirt-1674225000_1800x1800.png?v=1674496050'">
+                        </a>
+                     </div>
+                     <div class="grid-product__meta">
+                        <a href="product_1.html" class="">GBRS Group Loyalty Long Sleeve Shirt - Multicolor</a>
+                        <p>฿ 12,000</p>
+                     </div>
                   </div>
-                  <div class="grid-product__meta">
-                     <a href="product_1.html" class="">GBRS Group Loyalty Long Sleeve Shirt - Multicolor</a>
-                     <p>฿ 12,000</p>
+
+                  <div class="col-6 col-md-3">
+                     <div class="p-img">
+                        <a href="product_1.html">
+                           <img
+                              src="https://cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Nocturnal-Professionals-Short-Sleeve-Shirt-1657289089_1800x1800.jpg?v=1657289092"
+                              onmouseout="this.src='https://cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Nocturnal-Professionals-Short-Sleeve-Shirt-1657289089_1800x1800.jpg?v=1657289092'"
+                              onmouseover="this.src='https://cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Nocturnal-Professionals-Short-Sleeve-Shirt-1657289095_1800x1800.jpg?v=1657289097'">
+                        </a>
+                     </div>
+                     <div class="grid-product__meta">
+                        <a href="product_1.html" class="">GBRS Group Loyalty Long Sleeve Shirt - Multicolor</a>
+                        <p>฿ 12,000</p>
+                     </div>
+                  </div>
+
+                  <div class="col-6 col-md-3">
+                     <div class="p-img">
+                        <a href="product_1.html">
+                           <img
+                              src="https://cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Tattoo-Flash-Short-Sleeve-Shirt-1678726784_3c4972d9-d404-451a-9881-b4f0cb51e3d5_1800x1800.jpg?v=1678726989"
+                              onmouseout="this.src='https://cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Tattoo-Flash-Short-Sleeve-Shirt-1678726784_3c4972d9-d404-451a-9881-b4f0cb51e3d5_1800x1800.jpg?v=1678726989'"
+                              onmouseover="this.src='https://cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Tattoo-Flash-Short-Sleeve-Shirt-1678726777_fafd8c41-4271-4c18-88d4-6c34d5644119_1800x1800.jpg?v=1678726985'">
+                        </a>
+                     </div>
+                     <div class="grid-product__meta">
+                        <a href="product_1.html" class="">GBRS Group Loyalty Long Sleeve Shirt - Multicolor</a>
+                        <p>฿ 12,000</p>
+                     </div>
+                  </div>
+
+                  <div class="col-6 col-md-3">
+                     <div class="p-img">
+                        <a href="product_1.html">
+                           <img
+                              src="https://cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Loyalty-Long-Sleeve-Shirt---Multicolor-1663598684_1800x1800.jpg?v=1678845192"
+                              onmouseout="this.src='https://cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Loyalty-Long-Sleeve-Shirt---Multicolor-1663598684_1800x1800.jpg?v=1678845192'"
+                              onmouseover="this.src='https://cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Loyalty-Long-Sleeve-Shirt---Multicolor-1663598687_1800x1800.jpg?v=1678845192'">
+                        </a>
+                     </div>
+                     <div class="grid-product__meta">
+                        <a href="product_1.html" class="">GBRS Group Loyalty Long Sleeve Shirt - Multicolor</a>
+                        <p>฿ 12,000</p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            <!-- !Food & Drink -->
+            <div id="foodDrink">
+               <!-- Row Food & Drink 1 -->
+               <div class="row">
+                  <!-- Product -->
+                  <div class="col-6 col-md-3">
+                     <div class="p-img">
+                        <a href="product_1.html">
+                           <img
+                              src="https://cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Loyalty-Long-Sleeve-Shirt---Multicolor-1663598677_600x.jpg?v=1673742975"
+                              onmouseout="this.src='https://cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Loyalty-Long-Sleeve-Shirt---Multicolor-1663598677_600x.jpg?v=1673742975'"
+                              onmouseover="this.src='https://cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Loyalty-Long-Sleeve-Shirt---Multicolor-1663849196_1800x1800.jpg?v=1678845153'">
+                        </a>
+                     </div>
+                     <div class="grid-product__meta">
+                        <a href="product_1.html" class="">GBRS Group Loyalty Long Sleeve Shirt - Multicolor</a>
+                        <p>฿ 12,000</p>
+                     </div>
+                  </div>
+
+                  <div class="col-6 col-md-3">
+                     <div class="p-img">
+                        <a href="product_1.html">
+                           <img
+                              src="//cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Patriotism-Long-Sleeve-Shirt-1663599156_600x.jpg?v=1673742895"
+                              onmouseout="this.src='//cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Patriotism-Long-Sleeve-Shirt-1663599156_600x.jpg?v=1673742895'"
+                              onmouseover="this.src='https://cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Patriotism-Long-Sleeve-Shirt-1663599160_1800x1800.jpg?v=1678845311'">
+                        </a>
+                     </div>
+                     <div class="grid-product__meta">
+                        <a href="product_1.html" class="">GBRS Group Loyalty Long Sleeve Shirt - Multicolor</a>
+                        <p>฿ 12,000</p>
+                     </div>
+                  </div>
+
+                  <div class="col-6 col-md-3">
+                     <div class="p-img">
+                        <a href="product_1.html">
+                           <img
+                              src="//cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Loyalty-Pullover-Hoodie---Multicolor-1663598921_600x.jpg?v=1673743061"
+                              onmouseout="this.src='//cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Loyalty-Pullover-Hoodie---Multicolor-1663598921_600x.jpg?v=1673743061'"
+                              onmouseover="this.src='https://cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Loyalty-Pullover-Hoodie---Multicolor-1663598829_1800x1800.jpg?v=1678845263'">
+                        </a>
+                     </div>
+                     <div class="grid-product__meta">
+                        <a href="product_1.html" class="">GBRS Group Loyalty Long Sleeve Shirt - Multicolor</a>
+                        <p>฿ 12,000</p>
+                     </div>
+                  </div>
+
+                  <div class="col-6 col-md-3">
+                     <div class="p-img">
+                        <a href="product_1.html">
+                           <img
+                              src="//cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-x-Tribe-Sk8z-War-Crimes-Long-Sleeve-Shirt-1673039608_7c6d9719-0d71-4834-9b7c-be342f36edbf_600x.png?v=1673040800"
+                              onmouseout="this.src='//cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-x-Tribe-Sk8z-War-Crimes-Long-Sleeve-Shirt-1673039608_7c6d9719-0d71-4834-9b7c-be342f36edbf_600x.png?v=1673040800'"
+                              onmouseover="this.src='https://cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Tattoo-Flash-Long-Sleeve-Shirt-1678723715_90c65e56-2a58-430e-bd60-80b6efb8dc38_1800x1800.jpg?v=1678726733'">
+                        </a>
+                     </div>
+                     <div class="grid-product__meta">
+                        <a href="product_1.html" class="">GBRS Group Loyalty Long Sleeve Shirt - Multicolor</a>
+                        <p>฿ 12,000</p>
+                     </div>
                   </div>
                </div>
 
-               <div class="col-6 col-md-3">
-                  <div class="p-img">
-                     <a href="product_1.html">
-                        <img src="https://cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Tattoo-Flash-Short-Sleeve-Shirt-1678726784_3c4972d9-d404-451a-9881-b4f0cb51e3d5_1800x1800.jpg?v=1678726989" onmouseout="this.src='https://cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Tattoo-Flash-Short-Sleeve-Shirt-1678726784_3c4972d9-d404-451a-9881-b4f0cb51e3d5_1800x1800.jpg?v=1678726989'"
-                        onmouseover="this.src='https://cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Tattoo-Flash-Short-Sleeve-Shirt-1678726777_fafd8c41-4271-4c18-88d4-6c34d5644119_1800x1800.jpg?v=1678726985'">
-                     </a>
+               <!-- !Row Food & Drink 2 -->
+               <div class="row">
+                  <div class="col-6 col-md-3">
+                     <div class="p-img">
+                        <a href="product_1.html">
+                           <img
+                              src="https://cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Instructor-Long-Sleeve-Shirt-1674224996_1800x1800.png?v=1674496050"
+                              onmouseout="this.src='https://cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Instructor-Long-Sleeve-Shirt-1674224996_1800x1800.png?v=1674496050'"
+                              onmouseover="this.src='https://cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Instructor-Long-Sleeve-Shirt-1674225000_1800x1800.png?v=1674496050'">
+                        </a>
+                     </div>
+                     <div class="grid-product__meta">
+                        <a href="product_1.html" class="">GBRS Group Loyalty Long Sleeve Shirt - Multicolor</a>
+                        <p>฿ 12,000</p>
+                     </div>
                   </div>
-                  <div class="grid-product__meta">
-                     <a href="product_1.html" class="">GBRS Group Loyalty Long Sleeve Shirt - Multicolor</a>
-                     <p>฿ 12,000</p>
-                  </div>
-               </div>
 
-               <div class="col-6 col-md-3">
-                  <div class="p-img">
-                     <a href="product_1.html">
-                        <img src="https://cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Loyalty-Long-Sleeve-Shirt---Multicolor-1663598684_1800x1800.jpg?v=1678845192"
-                        onmouseout="this.src='https://cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Loyalty-Long-Sleeve-Shirt---Multicolor-1663598684_1800x1800.jpg?v=1678845192'"
-                        onmouseover="this.src='https://cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Loyalty-Long-Sleeve-Shirt---Multicolor-1663598687_1800x1800.jpg?v=1678845192'">
-                     </a>
+                  <div class="col-6 col-md-3">
+                     <div class="p-img">
+                        <a href="product_1.html">
+                           <img
+                              src="https://cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Nocturnal-Professionals-Short-Sleeve-Shirt-1657289089_1800x1800.jpg?v=1657289092"
+                              onmouseout="this.src='https://cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Nocturnal-Professionals-Short-Sleeve-Shirt-1657289089_1800x1800.jpg?v=1657289092'"
+                              onmouseover="this.src='https://cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Nocturnal-Professionals-Short-Sleeve-Shirt-1657289095_1800x1800.jpg?v=1657289097'">
+                        </a>
+                     </div>
+                     <div class="grid-product__meta">
+                        <a href="product_1.html" class="">GBRS Group Loyalty Long Sleeve Shirt - Multicolor</a>
+                        <p>฿ 12,000</p>
+                     </div>
                   </div>
-                  <div class="grid-product__meta">
-                     <a href="product_1.html" class="">GBRS Group Loyalty Long Sleeve Shirt - Multicolor</a>
-                     <p>฿ 12,000</p>
+
+                  <div class="col-6 col-md-3">
+                     <div class="p-img">
+                        <a href="product_1.html">
+                           <img
+                              src="https://cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Tattoo-Flash-Short-Sleeve-Shirt-1678726784_3c4972d9-d404-451a-9881-b4f0cb51e3d5_1800x1800.jpg?v=1678726989"
+                              onmouseout="this.src='https://cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Tattoo-Flash-Short-Sleeve-Shirt-1678726784_3c4972d9-d404-451a-9881-b4f0cb51e3d5_1800x1800.jpg?v=1678726989'"
+                              onmouseover="this.src='https://cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Tattoo-Flash-Short-Sleeve-Shirt-1678726777_fafd8c41-4271-4c18-88d4-6c34d5644119_1800x1800.jpg?v=1678726985'">
+                        </a>
+                     </div>
+                     <div class="grid-product__meta">
+                        <a href="product_1.html" class="">GBRS Group Loyalty Long Sleeve Shirt - Multicolor</a>
+                        <p>฿ 12,000</p>
+                     </div>
+                  </div>
+
+                  <div class="col-6 col-md-3">
+                     <div class="p-img">
+                        <a href="product_1.html">
+                           <img
+                              src="https://cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Loyalty-Long-Sleeve-Shirt---Multicolor-1663598684_1800x1800.jpg?v=1678845192"
+                              onmouseout="this.src='https://cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Loyalty-Long-Sleeve-Shirt---Multicolor-1663598684_1800x1800.jpg?v=1678845192'"
+                              onmouseover="this.src='https://cdn.shopify.com/s/files/1/0430/4443/8181/products/GBRS-Group-Loyalty-Long-Sleeve-Shirt---Multicolor-1663598687_1800x1800.jpg?v=1678845192'">
+                        </a>
+                     </div>
+                     <div class="grid-product__meta">
+                        <a href="product_1.html" class="">GBRS Group Loyalty Long Sleeve Shirt - Multicolor</a>
+                        <p>฿ 12,000</p>
+                     </div>
                   </div>
                </div>
             </div>
@@ -223,10 +625,68 @@
    <!-- !Footer -->
    <footer-component></footer-component>
 
+   <script>
+      function myFunction() {
+         var checkBox = document.getElementById("checkboxShirt");
+         var checkBoxCoupon = document.getElementById("checkboxCoupon");
+         var checkboxFoodDrink = document.getElementById("checkboxFoodDrink");
+         var divShirt = document.getElementById("shirt");
+         var divCoupon = document.getElementById("coupon");
+         var divFoodDrink = document.getElementById("foodDrink");
+         var myVar;
+         // myVar = setTimeout(showPage, 3000);
+
+         if (checkBox.checked == true && checkBoxCoupon.checked == true && checkboxFoodDrink.checked == true) {
+            divShirt.style.display = "block";
+            divCoupon.style.display = "block";
+            divFoodDrink.style.display = "block";
+         } else if (checkBox.checked == true && checkBoxCoupon.checked) {
+            divShirt.style.display = "block";
+            divCoupon.style.display = "block";
+            divFoodDrink.style.display = "none";
+         } else if (checkBox.checked == true && checkboxFoodDrink.checked == true) {
+            divShirt.style.display = "block";
+            divCoupon.style.display = "none";
+            divFoodDrink.style.display = "block";
+         } else if (checkBoxCoupon.checked == true && checkboxFoodDrink.checked == true) {
+            divShirt.style.display = "none";
+            divCoupon.style.display = "block";
+            divFoodDrink.style.display = "block";
+         } else if (checkBox.checked == true) {
+            divShirt.style.display = "block";
+            divCoupon.style.display = "none";
+            divFoodDrink.style.display = "none";
+         } else if (checkBoxCoupon.checked == true) {
+            divShirt.style.display = "none";
+            divCoupon.style.display = "block";
+            divFoodDrink.style.display = "none";
+         } else if (checkboxFoodDrink.checked == true) {
+            divShirt.style.display = "none";
+            divCoupon.style.display = "none";
+            divFoodDrink.style.display = "block";
+         } else {
+            divShirt.style.display = "block";
+            divCoupon.style.display = "block";
+            divFoodDrink.style.display = "block";
+         }
+      }
+
+      function showPage() {
+         divShirt.style.display = "none";
+         divCoupon.style.display = "none";
+         divFoodDrink.style.display = "none";
+         document.getElementById("loader").style.display = "block";
+      }
+
+      AOS.init();
+   </script>
+
    <!-- SCRIPT -->
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
       crossorigin="anonymous"></script>
    <script src="component/component.js"></script>
+   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 </body>
+
 </html>

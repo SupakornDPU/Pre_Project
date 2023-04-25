@@ -50,6 +50,8 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    /* คำสั่งที่ช่วยให้สีของ Background Drop ลง */
+    box-shadow: inset 0 0 0 2000px rgba(39, 40, 41, 0.5);
 }
 
 .home-text h2 {
@@ -127,69 +129,9 @@
 .wrapper span.num {
     font-size: 18px;
     pointer-events: none;
-    border-left: 2px solid rgba(255, 255, 255, 0.2); 
+    border-left: 2px solid rgba(255, 255, 255, 0.2);
     border-right: 2px solid rgba(255, 255, 255, 0.2);
 }
-/* .quantity {
-    display: inline-block;
-}
-
-.quantity .input-text.qty {
-    width: 35px;
-    height: 39px;
-    padding: 0 5px;
-    text-align: center;
-    background-color: transparent;
-    border: 1px solid transparent;
-}
-
-.quantity.buttons_added {
-    text-align: left;
-    position: relative;
-    white-space: nowrap;
-    vertical-align: top;
-}
-
-.quantity.buttons_added input {
-    display: inline-block;
-    margin: 0;
-    vertical-align: top;
-    box-shadow: none;
-}
-
-.quantity.buttons_added .minus,
-.quantity.buttons_added .plus {
-    padding: 7px 10px 8px;
-    height: 41px;
-    background-color: transparent;
-    border: 1px solid transparent;
-    cursor: pointer;
-}
-
-.quantity.buttons_added .minus {
-    border-right: 0;
-}
-
-.quantity.buttons_added .plus {
-    border-left: 0;
-}
-
-.quantity.buttons_added .minus:hover,
-.quantity.buttons_added .plus:hover {
-    background: #eeeeee;
-}
-
-.quantity input::-webkit-outer-spin-button,
-.quantity input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    margin: 0;
-}
-
-.quantity.buttons_added .minus:focus,
-.quantity.buttons_added .plus:focus {
-    outline: none;
-} */
 
 /* !Service Point */
 .block-img-service {
@@ -265,19 +207,28 @@
 
 /* The side navigation menu */
 .sidenav {
-    height: 100%; /* 100% Full-height */
-    width: 0; /* 0 width - change this with JavaScript */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Stay on top */
-    top: 0; /* Stay at the top */
+    height: 100%;
+    /* 100% Full-height */
+    width: 0;
+    /* 0 width - change this with JavaScript */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Stay on top */
+    top: 0;
+    /* Stay at the top */
     right: 0;
-    background-color: #fff; /* Black*/
-    overflow-x: hidden; /* Disable horizontal scroll */
-    padding-top: 60px; /* Place content 60px from the top */
-    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+    background-color: #fff;
+    /* Black*/
+    overflow-x: hidden;
+    /* Disable horizontal scroll */
+    padding-top: 60px;
+    /* Place content 60px from the top */
+    transition: 0.5s;
+    /* 0.5 second transition effect to slide in the sidenav */
 }
 
-  /* The navigation menu links */
+/* The navigation menu links */
 .sidenav a {
     padding: 8px 8px 8px 8px;
     text-decoration: none;
@@ -287,12 +238,12 @@
     transition: 0.3s;
 }
 
-  /* When you mouse over the navigation links, change their color */
+/* When you mouse over the navigation links, change their color */
 .sidenav a:hover {
     color: #f1f1f1;
 }
 
-  /* Position and style the close button (top right corner) */
+/* Position and style the close button (top right corner) */
 .sidenav .closebtn {
     position: absolute;
     top: 0;
@@ -301,19 +252,24 @@
     margin-left: 50px;
 }
 
-  /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
 #main {
     transition: margin-left .5s;
     padding: 20px;
 }
 
-  /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {
-    .sidenav {padding-top: 15px;}
-    .sidenav a {font-size: 18px;}
+    .sidenav {
+        padding-top: 15px;
+    }
+
+    .sidenav a {
+        font-size: 18px;
+    }
 }
 
-/* CART */
+/* !CART */
 .img-cart {
     width: 120px;
     height: 120px;
@@ -328,4 +284,55 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+
+/* !LOADING */
+.loader {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    position: relative;
+    animation: rotate 1s linear infinite
+}
+
+.loader::before,
+.loader::after {
+    content: "";
+    box-sizing: border-box;
+    position: absolute;
+    inset: 0px;
+    border-radius: 50%;
+    border: 5px solid #FFF;
+    animation: prixClipFix 2s linear infinite;
+}
+
+.loader::after {
+    transform: rotate3d(90, 90, 0, 180deg);
+    border-color: #FF3D00;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg)
+    }
+
+    100% {
+        transform: rotate(360deg)
+    }
+}
+
+@keyframes prixClipFix {
+    0% {
+        clip-path: polygon(50% 50%, 0 0, 0 0, 0 0, 0 0, 0 0)
+    }
+
+    50% {
+        clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 0, 100% 0, 100% 0)
+    }
+
+    75%,
+    100% {
+        clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 100% 100%, 100% 100%)
+    }
 }
