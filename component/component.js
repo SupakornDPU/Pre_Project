@@ -22,7 +22,6 @@ class NavBar extends HTMLElement {
             </div>
             <div class="d-flex justify-content-end align-items-center">
                <div class="w3-hide-small w3-hide-medium" id="authLoginRegis">
-                  <a href="#" class="w3-bar-item w3-button w3-wide"><i class="bi bi-cart-fill"></i>Cart</a>
                   <a href="login.html" class="w3-bar-item w3-button w3-wide"><i class="fa fa-user"></i>LOGIN</a>
                   <a href="register.html" class="w3-bar-item w3-button w3-wide"><i class="fa fa-user"></i>REGISTER</a>
                </div>

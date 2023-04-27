@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-auth.js";
+import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-auth.js";
 
 const firebaseConfig = {
    apiKey: "AIzaSyCODow7HLMRU3ik_9glYxoxjE2R6prKjq8",
@@ -14,30 +14,3 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-
-const form = document.getElementById("registerForm");
-const authLoginRegis = document.getElementById("authLoginRegis");
-const profile = document.getElementById("profile");
-
-form.addEventListener("submit", (e) => {
-   e.preventDefault();
-   const email = form.email.value;
-   const password = form.password.value;
-   createUserWithEmailAndPassword(auth, email, password)
-   .then((result) => {
-      alert("สมัครสมาชิกสำเร็จ");
-   }).catch((err) => {
-      alert("สมัครสมาชิกไม่สำเร็จ");
-   });
-});
-
-onAuthStateChanged(auth, (user) => {
-   if (user) {
-      // window.location.replace("index.html");
-      profile.style.display = "block";
-      authLoginRegis.style.display = "none";
-   } else {
-      profile.style.display = "none";
-      authLoginRegis.style.display = "block";
-   }
-});

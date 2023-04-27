@@ -72,13 +72,32 @@
          border-radius: 5px;
          padding: 30px;
          margin: 0;
-         width: 273px;
-         height: 250px;
+         width: 300px;
+         height: 350px;
          margin: 2px;
+      }
+      
+      .about-img {
+         width: 200px;
+         height: 200px;
+         margin: 0 auto;
+      }
+      
+      .about-img img {
+         width: 100%;
+         height: 100%;
+         object-fit: cover;
+      }
+
+      .about-text {
+         margin-top: 2rem;
+         font-size: 18px;
+         font-weight: 500;
+         color: #000000;
       }
    </style>
 </head>
-
+<!-- b29f82 -->
 <body>
    <!-- !Navbar -->
    <navbar-component></navbar-component>
@@ -94,7 +113,7 @@
       <a href="#pricing" onclick="w3_close()" class="w3-bar-item w3-button">PRICING</a>
       <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button">CONTACT</a>
    </nav>
-
+   
    <Section class="home d-flex justify-content-center align-items-center" id="home">
       <div class="row d-flex justify-content-center align-items-center text-center" style="width: 1000px;">
          <div class="col-md-6 home-text">
@@ -106,7 +125,7 @@
    <!-- ! ABOUT -->
    <div style="padding: 5rem;background-color: #FEF5ED;">
       <div class="row my-5 d-flex justify-content-center align-items-center text-center inline">
-         <div data-aos="zoom-out" data-aos-offset="300">
+         <div>
             <h4 style="color: green;">" ตู้รีฟัน ตู้รับคืนขยะรีไซเคิลอัตโนมัติ "</h4>
             <h1 style="font-weight: 700;">ABOUT RECYCLE MACHINE</h1>
             <h4 class="my-3" style="color: gray;">Reverse Vending Fun Machine</h4>
@@ -116,54 +135,71 @@
             </p>
          </div>
       </div>
-      <div class="row d-flex justify-content-center align-items-center text-center inline">
-         <div class="col-md-4 about-box" style="background-color: #D3E4CD;" data-aos="fade-down" data-aos-offset="300">
-            <i class="fa fa-desktop w3-margin-bottom w3-jumbo w3-center"></i>
-            <p class="w3-large">Responsive</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-               labore et
-               dolore.</p>
-         </div>
-         <div class="col-md-4 about-box" style="background-color: #D3E4CD;" data-aos="fade-down" data-aos-offset="300">
-            <i class="fa fa-heart w3-margin-bottom w3-jumbo"></i>
-            <p class="w3-large">Passion</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-               labore et
-               dolore.</p>
-         </div>
-         <div class="col-md-4 about-box" style="background-color: #D3E4CD;" data-aos="fade-down" data-aos-offset="300">
-            <i class="fa fa-diamond w3-margin-bottom w3-jumbo"></i>
-            <p class="w3-large">Design</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-               labore et
-               dolore.</p>
+      <div class="row  d-flex justify-content-center align-items-center text-center inline "  data-aos="fade-down" data-aos-offset="300">
+         <div class="mt-5 mb-4">
+            <h4 style="color: green;">" วิธีการใช้งานตู้รีฟัน "</h4>
+            <h1 style="font-weight: 700;">เริ่มต้นใช้งานง่ายๆ เพียงแค่ไม่กี่ขั้นตอน</h1>
          </div>
       </div>
       <div class="row d-flex justify-content-center align-items-center text-center inline">
          <div class="col-md-4 about-box" style="background-color: #D3E4CD;" data-aos="fade-down" data-aos-offset="300">
-            <i class="fa fa-desktop w3-margin-bottom w3-jumbo w3-center"></i>
-            <p class="w3-large">Responsive</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-               labore et
-               dolore.</p>
+            <div class="about-img">
+               <img src="https://www.refun.com/wp-content/uploads/2019/08/howoto-02.svg" alt="">
+            </div>
+            <div class="about-text">
+               <p>กดที่ปุ่ม "REFUN"
+                  บนจอเพื่อเริ่มใช้งาน</p>
+            </div>
          </div>
          <div class="col-md-4 about-box" style="background-color: #D3E4CD;" data-aos="fade-down" data-aos-offset="300">
-            <i class="fa fa-heart w3-margin-bottom w3-jumbo"></i>
-            <p class="w3-large">Passion</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-               labore et
-               dolore.</p>
+            <div class="about-img">
+               <img src="https://www.refun.com/wp-content/uploads/2019/08/howoto3-03.svg" alt="">
+            </div>
+            <div class="about-text">
+               <p>กดเลือกเมนูสำหรับหยอดขวด
+                  ได้แก่สะสมแต้มสมาชิกและบริจาค</p>
+            </div>
          </div>
          <div class="col-md-4 about-box" style="background-color: #D3E4CD;" data-aos="fade-down" data-aos-offset="300">
-            <i class="fa fa-diamond w3-margin-bottom w3-jumbo"></i>
-            <p class="w3-large">Design</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-               labore et
-               dolore.</p>
+            <div class="about-img">
+               <img src="https://www.refun.com/wp-content/uploads/2019/08/howoto5-05-04-04.svg" alt="">
+            </div>
+            <div class="about-text">
+               <p>ใส่หมายเลขโทรศัพท์
+                  เพื่อสะสมแต้มไว้แลกของรางวัล</p>
+            </div>
+         </div>
+      </div>
+      <div class="row d-flex justify-content-center align-items-center text-center inline mt-2">
+         <div class="col-md-4 about-box" style="background-color: #D3E4CD;" data-aos="fade-down" data-aos-offset="300">
+            <div class="about-img">
+               <img src="https://www.refun.com/wp-content/uploads/2019/08/howoto6-06.svg" alt="">
+            </div>
+            <div class="about-text">
+               <p>สแกนบาร์โค้ด โดยการพลิกขวด
+                  หันด้านบาร์โค้ดขึ้นให้เห็นในจอ</p>
+            </div>
+         </div>
+         <div class="col-md-4 about-box" style="background-color: #D3E4CD;" data-aos="fade-down" data-aos-offset="300">
+            <div class="about-img">
+               <img src="https://www.refun.com/wp-content/uploads/2019/08/howoto7-07.svg" alt="">
+            </div>
+            <div class="about-text">
+               <p>กดปุ่ม "REFUN" อีกครั้ง
+                  เพื่อยืนยันเมื่อใส่ขวดครบ</p>
+            </div>
+         </div>
+         <div class="col-md-4 about-box" style="background-color: #D3E4CD;" data-aos="fade-down" data-aos-offset="300">
+            <div class="about-img">
+               <img src="https://www.refun.com/wp-content/uploads/2019/08/howoto8-08.svg" alt="">
+            </div>
+            <div class="about-text">
+               <p>เลือกรับหรือไม่รับใบเสร็จ
+                  ตามความต้องการ</p>
+            </div>
          </div>
       </div>
    </div>
-   <!-- ! ABOUT -->
 
    <div class="row align-items-center" style="background-color: #FEF5ED;margin: 0 auto;">
       <div class="col-md-6 image-block" data-aos="flip-up" data-aos-offset="300">
@@ -194,7 +230,7 @@
                      <div class="card">
                         <div class="card-img">
                            <img
-                              src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80"
+                              src="https://mpics.mgronline.com/pics/Images/562000011020502.JPEG"
                               class="">
                         </div>
                      </div>
@@ -216,7 +252,7 @@
                      <div class="card">
                         <div class="card-img">
                            <img
-                              src="https://images.unsplash.com/photo-1621992236407-339a2f5d677c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+                              src="	https://s359.kapook.com/pagebuilder/9003a471-e0f4-4d51-9400-7f157dee41d5.jpg"
                               class="">
                         </div>
                      </div>
@@ -238,7 +274,7 @@
                      <div class="card">
                         <div class="card-img">
                            <img
-                              src="https://images.unsplash.com/photo-1569326513472-830f1004d420?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+                              src="https://s359.kapook.com/pagebuilder/3e750d39-ed46-421e-a79e-8046759cedf0.jpg"
                               class="">
                         </div>
                      </div>
@@ -249,7 +285,7 @@
                      <div class="card">
                         <div class="card-img">
                            <img
-                              src="https://images.unsplash.com/photo-1569000971870-7605f9bd8734?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+                              src="https://images.unsplash.com/photo-1569326513472-830f1004d420?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
                               class="">
                         </div>
                      </div>
