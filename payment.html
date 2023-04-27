@@ -157,7 +157,7 @@
                   <div class="mb-3">
                      <h5 for="formFile" class="form-label">Upload Image</h5>
                      <input class="form-control" type="file" id="formFile">
-                     <img src="" alt="" id="preview">
+                     <img src="" alt="" id="image-preview">
                   </div>
                </div>
             </div>
@@ -184,10 +184,19 @@
       document.getElementById("paymentPoint").innerHTML = localStorage.getItem("productPoint");
       document.getElementById("amount").innerHTML = "Amount : " + localStorage.getItem("amount");
 
-      const reader = new FileReader()
+      const inputFile = document.getElementById('formFile');
+      const imagePreview = document.getElementById('image-preview');
 
-      let files = document.getElementById('formFile').files
-      document.getElementById("preview").src = reader.result
+      inputFile.addEventListener('change', (event) => {
+         const file = event.target.files[0];
+         const reader = new FileReader();
+
+         reader.addEventListener('load', (event) => {
+            imagePreview.src = event.target.result;
+         });
+
+         reader.readAsDataURL(file);
+      });
    </script>
 
    <!-- SCRIPT -->

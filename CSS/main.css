@@ -58,8 +58,42 @@ body, h1, h2, h3, h4, h5, h6 {
 }
 
 .home-text h2 {
-    font-size: 50px;
+
+    
     font-weight: bolder;
+    margin-top: 70px;
+    font-size: 65px;
+    font-weight: bold;
+    background: linear-gradient( 45deg, #ffffff, #ffffff, #ffffff, #ffffff, #ffffff);
+    background-size: 40%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    /* -webkit-text-stroke: 1px rgb(3, 3, 3); */
+
+    animation: gradient 1.5s infinite;
+    }
+
+    @keyframes gradient {
+    0% {
+        background-position: 0% 70%;
+    }
+    100% {
+        background-position: 70% 0%;
+    }
+    /* 50% {
+        background-position: 50% 100%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
+    50% {
+        background-position: 50% 0%;
+    } */
+    
+    
+    
+   
+   
 }
 
 .home-text {
@@ -337,4 +371,58 @@ body, h1, h2, h3, h4, h5, h6 {
     100% {
         clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 100% 100%, 100% 100%)
     }
+}
+
+.badge-status {
+    font-size: 14px!important;
+    font-weight: 300;
+    display: inline-block;
+    padding: 5px 10px;
+    margin-left: 10px;
+    font-size: 50%;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 0.25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    margin-bottom: 3px;
+    vertical-align: middle;
+}
+
+.badge-color-green {
+    /* margin-top: 10px; */
+    color: #fff;
+    background-color: #2ecc71;
+}
+
+.badge-color-blue {
+    margin-top: 10px;
+    color: #fff;
+    background-color: #3498db;
+}
+
+.badge-ready {
+    display: inline-block;
+    padding: 5px 10px;
+    margin-top: 15px;
+    margin-right: 10px;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 0.25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.badgestatus-color-green {
+    /* margin-top: 10px; */
+    color: #fff;
+    background-color: #2ecc71;
+}
+
+.badge-color-gray {
+    /* margin-top: 10px; */
+    color: #fff;
+    background-color: #bdc3c7;
 }

@@ -38,7 +38,7 @@ class NavBar extends HTMLElement {
 
          <!-- Hide right-floated links on small screens and replace them with a menu icon -->
          <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large"
-            onclick="w3_open()">
+            onclick="w3_open()" style="margin-right: 20px;">
             <i class="fa fa-bars"></i>
          </a>
       </div>
