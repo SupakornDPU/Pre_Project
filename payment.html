@@ -96,9 +96,11 @@
             </div>
          </div>
       </div>
+      <form id="payment">
       <div class="row">
          <div class="col-md-6">
             <div class="row">
+               
                <div class="col-md-12">
                   <h5>Contact Information</h5>
                   <div class="form-floating mb-3">
@@ -166,12 +168,13 @@
                   <a href="product_1.html">Return To Product</a>
                </div>
                <div class="col-7 col-md-6 text-end">
-                  <a class="btn btn-redeem btn-lg btn-block" href="shop.html" type="submit" id="redeem">Continue to
-                     shiping</a>
+                  <button class="btn btn-redeem btn-lg btn-block"  type="submit" id="redeem">Continue to
+                     shiping</button>
                </div>
             </div>
          </div>
       </div>
+      </form>
    </div>
 
    <!-- !Footer -->
@@ -194,9 +197,50 @@
          reader.addEventListener('load', (event) => {
             imagePreview.src = event.target.result;
          });
-
          reader.readAsDataURL(file);
       });
+
+
+   </script>
+
+   <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
+      import { getFirestore , collection , getDocs , deleteDoc , addDoc ,doc} from "https://www.gstatic.com/firebasejs/9.19.1/firebase-firestore.js";
+      import { getAuth, deleteUser ,createUserWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-auth.js";
+
+      const firebaseConfig = {
+         apiKey: "AIzaSyCODow7HLMRU3ik_9glYxoxjE2R6prKjq8",
+         authDomain: "recycle-machine-23716.firebaseapp.com",
+         projectId: "recycle-machine-23716",
+         storageBucket: "recycle-machine-23716.appspot.com",
+         messagingSenderId: "715253109818",
+         appId: "1:715253109818:web:8dae7aa5ed3ada676e1103",
+         measurementId: "G-DEQYWJ115S"
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const dborder = getFirestore(app);
+      const form = document.getElementById("payment");
+
+      form.addEventListener("submit", (e) => {
+         e.preventDefault();
+         addDoc(collection(dborder, "order"), {
+            Order_Email: form.floatingEmail.value,
+            Order_Name: form.floatingFirstname.value,
+            Order_Lastname: form.floatingLastname.value,
+            Order_Address: form.floatingAddress.value,
+            Order_Province: form.floatingProvince.value,
+            Order_Postalcode: form.floatingPostalCode.value,
+            Order_Phone: form.floatingPhone.value,
+            Order_Img : imagePreview.src
+         }).then(() => {
+            alert("เพิ่มข้อมูลเรียบร้อย");
+            window.location.href = " shop.html ";
+         });
+         
+      });
+
    </script>
 
    <!-- SCRIPT -->

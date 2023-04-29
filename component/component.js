@@ -26,7 +26,6 @@ class NavBar extends HTMLElement {
                   <a href="register.html" class="w3-bar-item w3-button w3-wide"><i class="fa fa-user"></i>REGISTER</a>
                </div>
                <div class="w3-hide-small w3-hide-medium" id="profile" style="display:none">
-                  <a href="#" class="w3-bar-item w3-button w3-wide"><i class="bi bi-cart-fill"></i>Cart</a>
                   <a href="#" class="w3-bar-item w3-button w3-wide"><i class="fa fa-user"></i>Profile</a>
                   <a href="#" class="w3-bar-item w3-button w3-wide" id="logout"><i class="fa fa-user"></i>LOGOUT</a>
                </div>

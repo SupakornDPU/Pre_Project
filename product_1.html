@@ -36,7 +36,8 @@
       }
 
       /* BTN ICON RIGHT SIDE */
-      .btn-right-side, .btn-right-side:hover {
+      .btn-right-side,
+      .btn-right-side:hover {
          font-family: 'Montserrat', sans-serif;
          color: white;
          background-color: #b29f82;
@@ -137,15 +138,27 @@
    <navbar-component></navbar-component>
 
    <!-- Sidebar on small screens when clicking the menu icon -->
-   <nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-large"
-      style="display:none;margin-top: -100px;" id="mySidebar">
+   <nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-large" style="display:none;"
+      id="mySidebar">
       <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close
          ×</a>
-      <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button">ABOUT</a>
-      <a href="#team" onclick="w3_close()" class="w3-bar-item w3-button">TEAM</a>
-      <a href="#work" onclick="w3_close()" class="w3-bar-item w3-button">WORK</a>
-      <a href="#pricing" onclick="w3_close()" class="w3-bar-item w3-button">PRICING</a>
-      <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button">CONTACT</a>
+      <a href="index.html" onclick="w3_close()" class="w3-bar-item w3-button">HOME</a>
+      <a href="shop.html" onclick="w3_close()" class="w3-bar-item w3-button">SHOP</a>
+      <a href="service_point.html" onclick="w3_close()" class="w3-bar-item w3-button">SERVICEPOINT</a>
+      <hr>
+      <div id="authLoginRegisRes">
+         <a href="login.html" onclick="w3_close()" class="w3-bar-item w3-button"><i class="fa fa-user"></i> LOGIN</a>
+         <a href="register.html" onclick="w3_close()" class="w3-bar-item w3-button"><i class="fa fa-user"></i>
+            REGISTER</a>
+      </div>
+      <div id="profileRes" style="display:none">
+         <a href="login.html" onclick="w3_close()" class="w3-bar-item w3-button"><i class="bi bi-cart-fill"></i>
+            CART</a>
+         <a href="#" onclick="w3_close()" class="w3-bar-item w3-button" id="logoutRes"><i class="fa fa-user"></i>
+            LOGOUT</a>
+         <a href="register.html" onclick="w3_close()" class="w3-bar-item w3-button"><i class="fa fa-user"></i>
+            PROFILE</a>
+      </div>
    </nav>
 
    <!-- !PAGE CONTENT! -->
@@ -312,11 +325,95 @@
    <!-- !Footer -->
    <footer-component></footer-component>
 
-   <script>
+   <script type="module">
+      // Firebase
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
+      import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-auth.js";
+
+      const firebaseConfig = {
+         apiKey: "AIzaSyCODow7HLMRU3ik_9glYxoxjE2R6prKjq8",
+         authDomain: "recycle-machine-23716.firebaseapp.com",
+         projectId: "recycle-machine-23716",
+         storageBucket: "recycle-machine-23716.appspot.com",
+         messagingSenderId: "715253109818",
+         appId: "1:715253109818:web:8dae7aa5ed3ada676e1103",
+         measurementId: "G-DEQYWJ115S"
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const auth = getAuth(app);
+      const profile = document.getElementById("profile");
+      const profileRes = document.getElementById("profileRes");
+      const authLoginRegis = document.getElementById("authLoginRegis");
+      const authLoginRegisRes = document.getElementById("authLoginRegisRes");
+      const logout = document.getElementById("logout");
+      const logoutRes = document.getElementById("logoutRes");
+      const adminMenu = document.getElementById("admin-menu");
+
+      onAuthStateChanged(auth, (user) => {
+         if (user && user.email === "nongfilmcry@gmail.com") {
+            // User is signed in and has the admin email address
+            adminMenu.style.display = "block";
+         } if (user) {
+            profile.style.display = "block";
+            authLoginRegis.style.display = "none";
+            profileRes.style.display = "block";
+            authLoginRegisRes.style.display = "none";
+
+         } else {
+            profile.style.display = "none";
+            profileRes.style.display = "none";
+            adminMenu.style.display = "none";
+            authLoginRegisRes.style.display = "block";
+            authLoginRegis.style.display = "block";
+         }
+      });
+
+      logout.addEventListener("click", (e) => {
+         signOut(auth)
+            .then(() => {
+               swal.fire({
+                  title: "ออกจากระบบสำเร็จ",
+                  icon: "success",
+                  showConfirmButton: false,
+                  timer: 1500
+               });
+            }).catch((err) => {
+               swal.fire({
+                  title: "ออกจากระบบไม่สำเร็จ",
+                  icon: "error",
+                  showConfirmButton: false,
+                  timer: 1500
+               });
+            });
+      })
+
+      logoutRes.addEventListener("click", (e) => {
+         signOut(auth)
+            .then(() => {
+               swal.fire({
+                  title: "ออกจากระบบสำเร็จ",
+                  icon: "success",
+                  showConfirmButton: false,
+                  timer: 1500
+               });
+            }).catch((err) => {
+               swal.fire({
+                  title: "ออกจากระบบไม่สำเร็จ",
+                  icon: "error",
+                  showConfirmButton: false,
+                  timer: 1500
+               });
+            });
+      })
+
+      // Change Image
       function changeImage(fileName) {
          let img = document.querySelector("#bannerImage");
          img.setAttribute("src", fileName);
       }
+
    </script>
 
    <!-- SCRIPT -->
@@ -327,6 +424,9 @@
       crossorigin="anonymous"></script>
    <script src="component/component.js"></script>
    <script src="JS/script.js"></script>
+
+   <!-- Sweetalert -->
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </body>
 
