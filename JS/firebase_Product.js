@@ -51,17 +51,59 @@ async function getProduct(dbproduct) {
    return productSnap;
 }
 
+// Function โหลดรูป
+const formFileFront = document.getElementById("formFileFront");
+const formFileBack = document.getElementById("formFileBack");
+const frontImgPreview = document.getElementById("frontImgPreview");
+const backImgPreview = document.getElementById("backImgPreview");
+
+formFileFront.addEventListener("change", (event) => {
+   const file = event.target.files[0];
+   const reader = new FileReader();
+
+   reader.addEventListener("load", (event) => {
+      document.getElementById("frontImgPreview").style.display = "block";
+      frontImgPreview.src = event.target.result;
+   });
+   reader.readAsDataURL(file);
+});
+
+formFileBack.addEventListener("change", (event) => {
+   const file = event.target.files[0];
+   const reader = new FileReader();
+
+   reader.addEventListener("load", (event) => {
+      document.getElementById("backImgPreview").style.display = "block";
+      backImgPreview.src = event.target.result;
+   });
+   reader.readAsDataURL(file);
+});
+
+// Function แสดงข้อมูล
 function showData(products) {
+   // Insert Row
    const row = table_product.insertRow(-1);
    const nameCol = row.insertCell(0);
    const pointCol = row.insertCell(1);
    const typeCol = row.insertCell(2);
-   const updateCol1 = row.insertCell(3);
-   const deleteCol1 = row.insertCell(4);
+   const frontImg = row.insertCell(3);
+   const backImg = row.insertCell(4);
+   const updateCol1 = row.insertCell(5);
+   const deleteCol1 = row.insertCell(6);
 
    nameCol.innerHTML = products.data().Product_Name;
    pointCol.innerHTML = products.data().Product_Point;
    typeCol.innerHTML = products.data().Product_Type;
+
+   frontImg.innerHTML = `<img src="${products.data().Product_BackImage
+      }" alt="Order image"height="50" width="50" 
+   style="cursor: pointer;" onclick="debugBase64('${products.data().Product_BackImage
+      }')" >`;
+
+   backImg.innerHTML = `<img src="${products.data().Product_FrontImage
+      }" alt="Order image"height="50" width="50" 
+   style="cursor: pointer;" onclick="debugBase64('${products.data().Product_FrontImage
+      }')" >`;
 
    //ปุ่มลบ
    let btn = document.createElement("button");
@@ -71,9 +113,13 @@ function showData(products) {
    deleteCol1.appendChild(btn);
    btn.addEventListener("click", (e) => {
       let id = e.target.getAttribute("data-id");
-      alert("ลบข้อมูลเรียบร้อย");
       console.log(id);
-      deleteDoc(doc(dbproduct, "product", id));
+      deleteDoc(doc(dbproduct, "product", id))
+         .then(() => {
+            alert("ลบข้อมูลเรียบร้อย");
+            window.location.href = " Adminproduct.html ";
+         })
+         .catch((error) => { });
    });
 
    let btnupdate = document.createElement("button");
@@ -117,7 +163,9 @@ form.addEventListener("submit", (e) => {
    addDoc(collection(dbproduct, "product"), {
       Product_Name: form.productname.value,
       Product_Point: form.productpoint.value,
-      Product_Type: form.producttype.value,
+      Product_Type: form.productTypeSelect.value,
+      Product_FrontImage: form.frontImgPreview.src,
+      Product_BackImage: form.backImgPreview.src,
    }).then(() => {
       alert("เพิ่มข้อมูลเรียบร้อย");
       window.location.href = " Adminproduct.html ";
@@ -129,4 +177,19 @@ window.addEventListener("click", (e) => {
    if (e.target == popup) {
       popup.classList.remove("active");
    }
+});
+
+async function getProductTypes(dbproduct) {
+   const productCol = collection(dbproduct, "productType");
+   const productSnap = await getDocs(productCol);
+   return productSnap;
+}
+
+const productTypeSelect = document.getElementById("productTypeSelect");
+const productTypes = await getProductTypes(dbproduct);
+productTypes.forEach((productType) => {
+   const option = document.createElement("option");
+   option.text = productType.data().Type_Name;
+   option.value = productType.data().Type_Name;
+   productTypeSelect.add(option);
 });

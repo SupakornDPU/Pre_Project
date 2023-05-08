@@ -30,7 +30,7 @@ class NavBar extends HTMLElement {
                   <a href="#" class="w3-bar-item w3-button w3-wide" id="logout"><i class="fa fa-user"></i>LOGOUT</a>
                </div>
                <div class="w3-hide-small w3-hide-medium" id="admin-menu" style="display:none">
-                  <a href="#" class="w3-bar-item w3-button w3-wide"><i class="bi bi-cart-fill"></i>Manage Admin</a>
+                  <a href="Adminproduct.html" class="w3-bar-item w3-button w3-wide"><i class="bi bi-cart-fill"></i>Manage Admin</a>
                </div>
             </div>
          </div>

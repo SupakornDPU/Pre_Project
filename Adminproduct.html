@@ -23,6 +23,16 @@
   <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
   <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 
+  <style>
+    #frontImgPreview,
+    #backImgPreview {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      margin: 0 auto;
+    }
+  </style>
+
 </head>
 
 <body>
@@ -34,102 +44,127 @@
 
   <div class="container-fluid">
     <div class="row">
-       <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-          <div class="position-sticky">
-             <ul class="nav flex-column">
-                <li class="nav-item">
-                <a class="nav-link active " href="Adminproduct.html">
-                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                      class="feather feather-shopping-cart">
-                      <circle cx="9" cy="21" r="1"></circle>
-                      <circle cx="20" cy="21" r="1"></circle>
-                      <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                   </svg>
-                   <span class="ml-2">Products</span>
-                </a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link  " :before href="Admincustomer.html">
-                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                      class="feather feather-users">
-                      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                      <circle cx="9" cy="7" r="4"></circle>
-                      <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                      <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                   </svg>
-                   <span class="ml-2">Customers</span>
-                </a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link  " :before href="Adminorder.html">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-credit-card-fill" viewBox="0 0 16 16">
-                  <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v1H0V4zm0 3v5a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7H0zm3 2h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-1a1 1 0 0 1 1-1z"/>
-                   </svg>
-                   <span class="ml-2">Orders</span>
-                </a>
-                </li>
-             </ul>
-          </div>
-       </nav>
+      <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+        <div class="position-sticky">
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link active " href="Adminproduct.html">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="feather feather-shopping-cart">
+                  <circle cx="9" cy="21" r="1"></circle>
+                  <circle cx="20" cy="21" r="1"></circle>
+                  <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+                <span class="ml-2">Products</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link  " :before href="Admincustomer.html">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="feather feather-users">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+                <span class="ml-2">Customers</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link  " :before href="Adminorder.html">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                  class="bi bi-credit-card-fill" viewBox="0 0 16 16">
+                  <path
+                    d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v1H0V4zm0 3v5a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7H0zm3 2h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-1a1 1 0 0 1 1-1z" />
+                </svg>
+                <span class="ml-2">Orders</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
     </div>
- </div>
+  </div>
 
   <!-- Content -->
   <div class="col-md-9 ml-sm-auto col-lg-10 px-md-4 py-4">
     <div class="container top-content">
       <h2 style="margin: 0px 0px 0px 0px;font-weight: bold;">Products Magnagement </h2>
     </div>
-      <div class="container page-content top-content">
-        <form id="addForm">
-          <div class="row ">
-            <div class="col-md-1 d-flex justify-content-center align-items-center">
-              <label for="text" class="form-label ">ชื่อสินค้า</label>
-            </div>
-            <div class="col-md-3 d-flex justify-content-center align-items-center">
-              <input class="form-control" type="text" name="productname" placeholder="กรุณากรอกชื่อสินค้า">
-            </div>
-            <div class="col-md-1 d-flex justify-content-center align-items-center">
-              <label for="text" class="form-label">ราคา</label>
-            </div>
-            <div class="col-md-3 d-flex justify-content-center align-items-center">
-              <input class="form-control" type="text" name="productpoint" placeholder="กรุณากรอกราคา">
-            </div>
-
-            <div class="col-md-1 d-flex justify-content-center align-items-center">
-              <label for="text" class="form-label">ประเภทสินค้า</label>
-            </div>
-
-            <div class="col-md-3 d-flex justify-content-center align-items-center">
-              <select class="form-select" aria-label="ประเภทสินค้า" name="producttype">
-                <option value="" disabled selected>เลือกประเภทสินค้า</option>
-                <option value="T-Shirt">T-Shirt</option>
-                <option value="A-Shirt">A-Shirt</option>
-                <option value="B-Shirt">B-Shirt</option>
-              </select>
-            </div>
+    <div class="container page-content top-content">
+      <form id="addForm">
+        <div class="row ">
+          <div class="col-md-1 d-flex justify-content-center align-items-center">
+            <label for="text" class="form-label ">ชื่อสินค้า</label>
           </div>
-          <div class="d-flex justify-content-center mt-4">
-            <div class="div mx-3">
-              <button type="submit" name="submit" class="btn btn-success">บันทึก</button>
-            </div>
+          <div class="col-md-3 d-flex justify-content-center align-items-center">
+            <input class="form-control" type="text" name="productname" placeholder="กรุณากรอกชื่อสินค้า">
           </div>
-        </form>
-        <div class="container mt-5">
-          <table class="table table-dark mb-5 text-center display" id="table2">
-            <thead>
-              <tr>
-                <th class="text-center">ชื่อสินค้า</th>
-                <th class="text-center">ราคา</th>
-                <th class="text-center">ประเภทสินค้า</th>
-                <th class="text-center"></th>
-                <th class="text-center"></th>
-              </tr>
-            </thead>
-          </table>
+          <div class="col-md-1 d-flex justify-content-center align-items-center">
+            <label for="text" class="form-label">ราคา</label>
+          </div>
+          <div class="col-md-3 d-flex justify-content-center align-items-center">
+            <input class="form-control" type="text" name="productpoint" placeholder="กรุณากรอกราคา">
+          </div>
+          <div class="col-md-1 d-flex justify-content-center align-items-center">
+            <label for="text" class="form-label">ประเภทสินค้า</label>
+          </div>
+
+          <div class="col-md-3 d-flex justify-content-center align-items-center">
+            <select class="form-select" aria-label="ประเภทสินค้า" name="productTypeSelect" id="productTypeSelect">
+              <option value="" disabled selected>เลือกประเภทสินค้า</option>
+              <!-- <option value="Shirt">Shirt</option>
+              <option value="Coupon">Coupon</option>
+              <option value="Food&Drink">Food & Drink</option> -->
+            </select>
+          </div>
         </div>
+        <div class="row mt-2">
+          <div class="col-md-6">
+            <div class="mb-3">
+              <label for="formFileFront" class="form-label">รูปด้านหน้าของสินค้า</label>
+              <input class="form-control" type="file" id="formFileFront">
+            </div>
+            <img src="" alt="" id="frontImgPreview" style="display: none;">
+          </div>
+          <div class="col-md-6">
+            <div class="mb-3">
+              <label for="formFileBack" class="form-label">รูปด้านหลังของสินค้า</label>
+              <input class="form-control" type="file" id="formFileBack">
+            </div>
+            <img src="" alt="" id="backImgPreview" style="display: none;">
+          </div>
+        </div>
+        <div class="d-flex justify-content-center mt-4">
+          <div class="div mx-3">
+            <button type="submit" name="submit" class="btn btn-success">บันทึก</button>
+          </div>
+          <div class="div mx-3">
+            <button type="button" class="btn btn-success" onclick="clearForm();">เคลียร์ข้อมูล</button>
+          </div>
+        </div>
+      </form>
+      <div class="container mt-5">
+        <table class="table table-dark mb-5 text-center display" id="table2">
+          <thead>
+            <tr>
+              <th class="text-center">ชื่อสินค้า</th>
+              <th class="text-center">ราคา</th>
+              <th class="text-center">ประเภทสินค้า</th>
+              <th class="text-center">รูปด้านหน้าสินค้า</th>
+              <th class="text-center">รูปด้านหลังสินค้า</th>
+              <th class="text-center"></th>
+              <th class="text-center"></th>
+            </tr>
+          </thead>
+          <tbody id="tbody">
+            
+          </tbody>
+        </table>
       </div>
+    </div>
   </div>
 
   <!-- POPUP -->
@@ -143,16 +178,33 @@
       <label for="text" class="form-label">ประเภทสินค้า</label>
       <select class="form-select" aria-label="ประเภทสินค้า" id="protype" name="protype">
         <option value="" disabled selected>เลือกประเภทสินค้า</option>
-        <option value="T-Shirt">T-Shirt</option>
-        <option value="A-Shirt">A-Shirt</option>
-        <option value="B-Shirt">B-Shirt</option>
+        <option value="Shirt">SHIRT</option>
+        <option value="Coupon">COUPON</option>
+        <option value="Food&Drink">FOOD & DRINK</option>
       </select>
       <input type="submit" value="Update" id="submitsss">
     </form>
   </div>
 
   <!-- SCRIPT -->
-  
+
+  <script>
+
+    function clearForm() {
+      document.getElementById("addForm").reset();
+      document.getElementById("frontImgPreview").src = "";
+      document.getElementById("backImgPreview").src = "";
+      document.getElementById("frontImgPreview").style.display = "none";
+      document.getElementById("backImgPreview").style.display = "none";
+    }
+
+    // Function แสดงรูปในหน้าใหม่
+    function debugBase64(base64URL) {
+      var win = window.open();
+      win.document.write('<iframe src="' + base64URL + '" frameborder="0" style="border:0; top:0px; left:0px; bottom:0px; right:0px; width:100%; height:100%;" allowfullscreen></iframe>');
+    }
+  </script>
+
   <script src="JS/firebase_Product.js" type="module"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
     integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"

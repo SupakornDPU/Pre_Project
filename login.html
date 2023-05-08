@@ -155,6 +155,7 @@
          e.preventDefault();
          const email = loginForm.email.value
          const password = loginForm.password.value
+
          signInWithEmailAndPassword(auth, email, password)
             .then((result) => {
                swal.fire({
@@ -185,6 +186,7 @@
             document.getElementById("admin-menu").style.display = "none";
          }
       });
+      
       // onAuthStateChanged(auth, (user) => {
       //    if (user) {
       //       profile.style.display = "block";

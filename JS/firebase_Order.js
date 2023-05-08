@@ -43,9 +43,9 @@ function showData(orders){
    const OrderProvince = row.insertCell(4)
    const OrderPostalcode = row.insertCell(5)
    const OrderPhone = row.insertCell(6)
-   const OrderImg = row.insertCell(7)
-   const botton = row.insertCell(8)
-   const deleteCol = row.insertCell(9)
+   // const OrderImg = row.insertCell(7)
+   const botton = row.insertCell(7)
+   const deleteCol = row.insertCell(8)
 
 
    OrderEmail.innerHTML = orders.data().Order_Email
@@ -55,7 +55,7 @@ function showData(orders){
    OrderProvince.innerHTML = orders.data().Order_Province
    OrderPostalcode.innerHTML = orders.data().Order_Postalcode
    OrderPhone.innerHTML = orders.data().Order_Phone
-   OrderImg.innerHTML = `<img src="${orders.data().Order_Img}" alt="Order image"height="50" width="50">`
+   // OrderImg.innerHTML = `<img src="${orders.data().Order_Img}" alt="Order image"height="50" width="50">`
 
    let btn2 = document.createElement('select')
    btn2.textContent="ลบข้อมูล"

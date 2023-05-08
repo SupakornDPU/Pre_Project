@@ -81,99 +81,89 @@
 
    <!-- !Content -->
    <div class="container page-content">
-      <div class="row my-4" style="margin-left: 0;">
-         <div class="col-md-6">
-            <div class="row align-items-center payment-detail">
-               <div class="col-6 col-md-6 cart-img">
-                  <img src="" alt="" id="paymentImg">
-               </div>
-               <div class="col-6 col-md-6">
-                  <h5 id="paymentName" style="font-weight: bolder;"></h5>
-                  <h5 id="sizeShow"></h5>
-                  <h5 id="paymentPoint"></h5>
-                  <h5 id="amount"></h5>
-               </div>
-            </div>
-         </div>
-      </div>
       <form id="payment">
-      <div class="row">
-         <div class="col-md-6">
-            <div class="row">
-               
-               <div class="col-md-12">
-                  <h5>Contact Information</h5>
-                  <div class="form-floating mb-3">
-                     <input type="email" class="form-control" id="floatingEmail" placeholder="Email">
-                     <label for="floatingEmail">Email address</label>
+         <div class="row my-4" style="margin-left: 0;" id="detailsProduct">
+            <div class="col-md-6">
+               <div class="row align-items-center payment-detail">
+                  <div class="col-6 col-md-6 cart-img">
+                     <img src="" alt="" id="paymentImg">
                   </div>
-               </div>
-            </div>
-            <div class="row my-3">
-               <h5>Shipping address</h5>
-               <div class="col-md-6 mb-3">
-                  <div class="form-floating">
-                     <input type="text" class="form-control" id="floatingFirstname" placeholder="First name">
-                     <label for="floatingFirstname">First name</label>
+                  <div class="col-6 col-md-6">
+                     <h5 id="paymentName" style="font-weight: bolder;"></h5>
+                     <h5 id="sizeShow"></h5>
+                     <h5 id="paymentPoint"></h5>
+                     <h5 id="amount"></h5>
                   </div>
-               </div>
-               <div class="col-md-6">
-                  <div class="form-floating">
-                     <input type="text" class="form-control" id="floatingLastname" placeholder="Last name">
-                     <label for="floatingLastname">Last name</label>
-                  </div>
-               </div>
-            </div>
-            <div class="row mb-3">
-               <div class="col-md-12">
-                  <div class="form-floating">
-                     <textarea class="form-control" placeholder="Address" id="floatingAddress"></textarea>
-                     <label for="floatingAddress">Address</label>
-                  </div>
-               </div>
-            </div>
-            <div class="row">
-               <div class="col-md-6 mb-3">
-                  <div class="form-floating">
-                     <input type="text" class="form-control" id="floatingProvince" placeholder="Province">
-                     <label for="floatingProvince">Province</label>
-                  </div>
-               </div>
-               <div class="col-md-6">
-                  <div class="form-floating">
-                     <input type="number" class="form-control" id="floatingPostalCode" placeholder="Postal Code">
-                     <label for="floatingPostalCode">Postal Code</label>
-                  </div>
-               </div>
-            </div>
-            <div class="row mb-3">
-               <div class="col-md-12">
-                  <div class="form-floating my-3">
-                     <input type="number" class="form-control" id="floatingPhone" placeholder="Phone">
-                     <label for="floatingPhone">Phone</label>
-                  </div>
-               </div>
-            </div>
-            <div class="row mb-3">
-               <div class="col-md-12">
-                  <div class="mb-3">
-                     <h5 for="formFile" class="form-label">Upload Image</h5>
-                     <input class="form-control" type="file" id="formFile">
-                     <img src="" alt="" id="image-preview">
-                  </div>
-               </div>
-            </div>
-            <div class="row justify-content-center align-items-center">
-               <div class="col-5 col-md-6 text-start">
-                  <a href="product_1.html">Return To Product</a>
-               </div>
-               <div class="col-7 col-md-6 text-end">
-                  <button class="btn btn-redeem btn-lg btn-block"  type="submit" id="redeem">Continue to
-                     shiping</button>
                </div>
             </div>
          </div>
-      </div>
+         <div class="row">
+            <div class="col-md-6">
+               <div class="row">
+                  <div class="col-md-12">
+                     <h5>Contact Information</h5>
+                     <div class="form-floating mb-3">
+                        <input type="email" class="form-control" id="floatingEmail" placeholder="Email">
+                        <label for="floatingEmail">Email address</label>
+                     </div>
+                  </div>
+               </div>
+               <div class="row my-3">
+                  <h5>Shipping address</h5>
+                  <div class="col-md-6 mb-3">
+                     <div class="form-floating">
+                        <input type="text" class="form-control" id="floatingFirstname" placeholder="First name">
+                        <label for="floatingFirstname">First name</label>
+                     </div>
+                  </div>
+                  <div class="col-md-6">
+                     <div class="form-floating">
+                        <input type="text" class="form-control" id="floatingLastname" placeholder="Last name">
+                        <label for="floatingLastname">Last name</label>
+                     </div>
+                  </div>
+               </div>
+               <div class="row mb-3">
+                  <div class="col-md-12">
+                     <div class="form-floating">
+                        <textarea class="form-control" placeholder="Address" id="floatingAddress"></textarea>
+                        <label for="floatingAddress">Address</label>
+                     </div>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-md-6 mb-3">
+                     <div class="form-floating">
+                        <input type="text" class="form-control" id="floatingProvince" placeholder="Province">
+                        <label for="floatingProvince">Province</label>
+                     </div>
+                  </div>
+                  <div class="col-md-6">
+                     <div class="form-floating">
+                        <input type="number" class="form-control" id="floatingPostalCode" placeholder="Postal Code">
+                        <label for="floatingPostalCode">Postal Code</label>
+                     </div>
+                  </div>
+               </div>
+               <div class="row mb-3">onclick
+                  <div class="col-md-12">
+                     <div class="form-floating my-3">
+                        <input type="number" class="form-control" id="floatingPhone" placeholder="Phone">
+                        <label for="floatingPhone">Phone</label>
+                     </div>
+                  </div>
+               </div>
+               <div class="row justify-content-center align-items-center">
+                  <div class="col-5 col-md-6 text-start">
+                     <a href="product_1.html">Return To Product</a>
+                  </div>
+                  <div class="col-7 col-md-6 text-end">
+                     <button class="btn btn-redeem btn-lg btn-block"  type="submit" id="redeem">Continue to
+                        shiping</button>
+                  </div>
+               </div>
+            </div>
+         </div>
       </form>
    </div>
 
@@ -181,26 +171,16 @@
    <footer-component></footer-component>
 
    <script>
-      document.getElementById("sizeShow").innerHTML = "Size : " + localStorage.getItem("selectSize");
-      document.getElementById("paymentImg").src = localStorage.getItem("productImg");
-      document.getElementById("paymentName").innerHTML = localStorage.getItem("productName");
-      document.getElementById("paymentPoint").innerHTML = localStorage.getItem("productPoint");
-      document.getElementById("amount").innerHTML = "Amount : " + localStorage.getItem("amount");
-
-      const inputFile = document.getElementById('formFile');
-      const imagePreview = document.getElementById('image-preview');
-
-      inputFile.addEventListener('change', (event) => {
-         const file = event.target.files[0];
-         const reader = new FileReader();
-
-         reader.addEventListener('load', (event) => {
-            imagePreview.src = event.target.result;
-         });
-         reader.readAsDataURL(file);
-      });
-
-
+      if (localStorage.length == 0) {
+         document.getElementById("detailsProduct").style.display = "none";
+      } else {
+         document.getElementById("sizeShow").innerHTML = "Size : " + localStorage.getItem("selectSize");
+         document.getElementById("paymentImg").src = localStorage.getItem("productImg");
+         document.getElementById("paymentName").innerHTML = localStorage.getItem("productName");
+         document.getElementById("paymentPoint").innerHTML = localStorage.getItem("productPoint");
+         document.getElementById("amount").innerHTML = "Amount : " + localStorage.getItem("amount");
+      }
+      
    </script>
 
    <script type="module">
@@ -233,12 +213,17 @@
             Order_Province: form.floatingProvince.value,
             Order_Postalcode: form.floatingPostalCode.value,
             Order_Phone: form.floatingPhone.value,
-            Order_Img : imagePreview.src
+            Order_Product_Name: localStorage.getItem("productName"),
+            Order_Product_Point: localStorage.getItem("productPoint"),
+            Order_Product_Size: localStorage.getItem("selectSize"),
+            Order_Product_Amount: localStorage.getItem("amount"),
+            Order_Product_Image: paymentImg.src,
+
          }).then(() => {
             alert("เพิ่มข้อมูลเรียบร้อย");
+            localStorage.clear();
             window.location.href = " shop.html ";
          });
-         
       });
 
    </script>
