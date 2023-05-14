@@ -15,7 +15,7 @@ const firebaseConfig = {
    messagingSenderId: "715253109818",
    appId: "1:715253109818:web:8dae7aa5ed3ada676e1103",
    measurementId: "G-DEQYWJ115S"
- };
+};
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -28,6 +28,12 @@ const table2 = document.getElementById("table2");
 const form = document.getElementById("registerForm");
 
 
+//ดึงกลุ่ม Document
+const data = await getUsers(dborder)
+data.forEach(orders =>{
+   showData(orders)
+})
+
 async function getUsers(dborder){
    const orderCol = collection(dborder,'order')
    const orderSnap = await getDocs(orderCol)
@@ -35,59 +41,46 @@ async function getUsers(dborder){
 }
 
 function showData(orders){
-   const row = table.insertRow(-1)
-   const OrderEmail = row.insertCell(0)
-   const OrderName = row.insertCell(1)
-   const OrderLast = row.insertCell(2)
-   const OrderAddress = row.insertCell(3)
-   const OrderProvince = row.insertCell(4)
-   const OrderPostalcode = row.insertCell(5)
-   const OrderPhone = row.insertCell(6)
-   // const OrderImg = row.insertCell(7)
-   const botton = row.insertCell(7)
-   const deleteCol = row.insertCell(8)
+   const order = orders.data()
+   const cartContainer = document.getElementById("cartContainer")
 
+   // ดึงข้อมูลมาแสดงใน cartContainer
+   cartContainer.innerHTML += `
+      <div class="row justify-content-center align-items-center my-4">
+         <div class="col-2 col-md-3 cart-img text-center">
+            <img src="${order.Order_Product_Image}" alt="">
+         </div>
+         <div class="col-2 col-md-3" style="margin-left: 2em;">
+            <p>${order.Order_Product_Name}</p>
+            <p>Size: ${order.Order_Product_Size}</p>
+         </div>
+         <div class="col-2 col-md-3 text-center" style="width: 50px;">
+            <p>${order.Order_Product_Amount}</p>
+         </div>
+         <div class="col-2 col-md-3 text-center">
+            <p>฿${order.Order_Product_Total}</p>
+         </div>
+         <div class="col-2 col-md-2 text-center">
+            <button class="btn btn-danger" data-id="${orders.id}" id="btnOrder"><i class="bi bi-x"></i></button>
+         </div>
+      </div>
+         `;
 
-   OrderEmail.innerHTML = orders.data().Order_Email
-   OrderName.innerHTML = orders.data().Order_Name
-   OrderLast.innerHTML = orders.data().Order_Lastname
-   OrderAddress.innerHTML = orders.data().Order_Address
-   OrderProvince.innerHTML = orders.data().Order_Province
-   OrderPostalcode.innerHTML = orders.data().Order_Postalcode
-   OrderPhone.innerHTML = orders.data().Order_Phone
-   // OrderImg.innerHTML = `<img src="${orders.data().Order_Img}" alt="Order image"height="50" width="50">`
-
-   let btn2 = document.createElement('select')
-   btn2.textContent="ลบข้อมูล"
-   btn2.setAttribute('class','form-select')
-   botton.appendChild(btn2)
-   btn2.addEventListener('click',(e)=>{
-      
-   })
    //ปุ่มลบ
-   let btn = document.createElement('button')
-   btn.textContent="ลบข้อมูล"
-   btn.setAttribute('class','btn btn-danger')
-   btn.setAttribute('data-id',orders.id)
-   deleteCol.appendChild(btn)
-   btn.addEventListener('click',(e)=>{
-      let id = e.target.getAttribute('data-id');
-   
-      deleteDoc(doc(dborder,'order',id))
-      .then(() => {
-         alert("ลบข้อมูลเรียบร้อย")
-         window.location.href = " Adminorder.html "
-      }).catch((error) => {
-      
+   const btnOrders = document.querySelectorAll("#btnOrder");
+   if (btnOrders) {
+      btnOrders.forEach((btnOrder) => {
+         btnOrder.addEventListener('click',(e)=>{
+            let id = e.currentTarget.getAttribute('data-id');
+         
+            deleteDoc(doc(dborder,'order',id))
+            .then(() => {
+               alert("ลบข้อมูลเรียบร้อย")
+               window.location.href = "order.html"
+            }).catch((error) => {
+            
+            });
+         });
       });
-      
-   })
+   }
 }
-
-//ดึงกลุ่ม Document
-const data = await getUsers(dborder)
-data.forEach(orders =>{
-   showData(orders)
-})
-
-

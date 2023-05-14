@@ -606,25 +606,6 @@ onAuthStateChanged(auth, (user) => {
    }
 });
 
-logout.addEventListener("click", (e) => {
-   signOut(auth)
-      .then(() => {
-         swal.fire({
-            title: "ออกจากระบบสำเร็จ",
-            icon: "success",
-            showConfirmButton: false,
-            timer: 1500
-         });
-      }).catch((err) => {
-         swal.fire({
-            title: "ออกจากระบบไม่สำเร็จ",
-            icon: "error",
-            showConfirmButton: false,
-            timer: 1500
-         });
-      });
-})
-
 logoutRes.addEventListener("click", (e) => {
    signOut(auth)
       .then(() => {

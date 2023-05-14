@@ -118,8 +118,7 @@ function showData(products) {
          .then(() => {
             alert("ลบข้อมูลเรียบร้อย");
             window.location.href = " Adminproduct.html ";
-         })
-         .catch((error) => { });
+         }).catch((error) => { });
    });
 
    let btnupdate = document.createElement("button");
@@ -150,6 +149,7 @@ function showData(products) {
          Product_Point: formpop.proprice.value,
          Product_Type: formpop.protype.value,
       }).then(() => {
+         alert("เพิ่มข้อมูลเรียบร้อย");
          popup.classList.remove("active");
          window.location.href = " Adminproduct.html ";
       });

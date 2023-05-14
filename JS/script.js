@@ -20,14 +20,14 @@ minus.addEventListener("click", () => {
 })
 
 // ! Cart side nav
-   /* Set the width of the side navigation to 250px */
+/* Set the width of the side navigation to 250px */
 function openNav() {
    document.getElementById("mySidenav").style.width = "380px";
    document.body.style.backgroundColor = "rgba(0,0,0,0.5)";
    document.getElementById("pagecontent").style.pointerEvents = "none";
 }
 
-   /* Set the width of the side navigation to 0 */
+/* Set the width of the side navigation to 0 */
 function closeNav() {
    document.getElementById("mySidenav").style.width = "0";
    document.body.style.backgroundColor = "white";
@@ -50,12 +50,7 @@ redeem.addEventListener("click", function () {
       }
    }
 
-   localStorage.setItem("productImg", productImg);
-   localStorage.setItem("selectSize", selectedSize);
-   localStorage.setItem("productName", productName);
-   localStorage.setItem("productPoint", productPoint);
-   localStorage.setItem("amount", a);
-
+   let total = a * parseInt(productPoint);
    let html = "";
    html += `
    
@@ -84,7 +79,7 @@ redeem.addEventListener("click", function () {
                <h5>TOTAL</h5>
             </div>
             <div class="col-6 text-end">
-               <p style="font-weight: bold;">${a*parseInt(productPoint)} P.</p>
+               <p style="font-weight: bold;">${total} P.</p>
             </div>
          </div>
       </div>
@@ -94,5 +89,12 @@ redeem.addEventListener("click", function () {
    newNode.className = 'row';
    newNode.innerHTML = html;
    document.getElementById("cartOrder").appendChild(newNode);
-   document.getElementById("totalPoint").innerHTML = a*parseInt(productPoint)+" P.";
+   document.getElementById("totalPoint").innerHTML = a * parseInt(productPoint) + " P.";
+
+   localStorage.setItem("productImg", productImg);
+   localStorage.setItem("selectSize", selectedSize);
+   localStorage.setItem("productName", productName);
+   localStorage.setItem("productPoint", productPoint);
+   localStorage.setItem("total", total);
+   localStorage.setItem("amount", a);
 });

@@ -44,37 +44,30 @@
 <body>
    <!-- !Navbar -->
    <navbar-component></navbar-component>
-   
-   <!-- <div class="w3-top">
-      <div class="w3-bar w3-card" id="myNavbar">
-         <div class="w3-large d-flex justify-content-between align-items-center text-center">
-            <div class="w3-hide-small w3-hide-medium">
-               <a href="index.html" class="w3-bar-item w3-button w3-wide block-logo">
-                  <img src="img/LOGO.png" alt="" srcset="" class="logo-img">
-               </a>
-            </div>
-            <div class="w3-hide-small w3-hide-medium" style="padding-left: 200px;">
-               <a href="index.html" class="w3-bar-item w3-button"> HOME</a>
-               <a href="#team" class="w3-bar-item w3-button"> ABOUT</a>
-               <a href="#work" class="w3-bar-item w3-button"><i class="fa fa-th"></i> SERVICE POINT</a>
-               <a href="#contact" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i> CONTACT</a>
-            </div>
-            <div class="w3-hide-small w3-hide-medium" id="authLoginRegis">
-               <a href="login.html" class="w3-bar-item w3-button w3-wide"><i class="fa fa-user"></i>LOGIN</a>
-               <a href="register.html" class="w3-bar-item w3-button w3-wide"><i class="fa fa-user"></i>REGISTER</a>
-            </div>
-            <div class="w3-hide-small w3-hide-medium" id="profile" style="display: none;">
-               <a href="#" class="w3-bar-item w3-button w3-wide"><i class="fa fa-user"></i>Profile</a>
-               <a href="#" class="w3-bar-item w3-button w3-wide" id="logout"><i class="fa fa-user"></i>LOGOUT</a>
-            </div>
-         </div> -->
 
-   <!-- Navbar on small screens -->
-   <!-- <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large" onclick="w3_open()">
-            <i class="fa fa-bars"></i>
-         </a>
+   <!-- Sidebar on small screens when clicking the menu icon -->
+   <nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-large" style="display:none;margin-top: -250px;"
+      id="mySidebar">
+      <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close
+         ×</a>
+      <a href="index.html" onclick="w3_close()" class="w3-bar-item w3-button">HOME</a>
+      <a href="shop.html" onclick="w3_close()" class="w3-bar-item w3-button">SHOP</a>
+      <a href="service_point.html" onclick="w3_close()" class="w3-bar-item w3-button">SERVICEPOINT</a>
+      <hr>
+      <div id="authLoginRegisRes">
+         <a href="login.html" onclick="w3_close()" class="w3-bar-item w3-button"><i class="fa fa-user"></i> LOGIN</a>
+         <a href="register.html" onclick="w3_close()" class="w3-bar-item w3-button"><i class="fa fa-user"></i>
+            REGISTER</a>
       </div>
-   </div> -->
+      <div id="profileRes" style="display:none">
+         <a href="login.html" onclick="w3_close()" class="w3-bar-item w3-button"><i class="bi bi-cart-fill"></i>
+            CART</a>
+         <a href="#" onclick="w3_close()" class="w3-bar-item w3-button" id="logoutRes"><i class="fa fa-user"></i>
+            LOGOUT</a>
+         <a href="register.html" onclick="w3_close()" class="w3-bar-item w3-button"><i class="fa fa-user"></i>
+            PROFILE</a>
+      </div>
+   </nav>
 
    <!-- Sidebar on small screens when clicking the menu icon -->
    <nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large"
@@ -186,7 +179,7 @@
             document.getElementById("admin-menu").style.display = "none";
          }
       });
-      
+
       // onAuthStateChanged(auth, (user) => {
       //    if (user) {
       //       profile.style.display = "block";
@@ -226,4 +219,5 @@
    <!-- Sweetalert -->
    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
+
 </html>
