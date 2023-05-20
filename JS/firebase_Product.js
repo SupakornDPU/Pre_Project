@@ -33,10 +33,13 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const dbproduct = getFirestore(app);
 
-//ตาราง
+//
 const table_product = document.getElementById("table2");
+const table_type = document.getElementById("tabletype");
 const form = document.getElementById("addForm");
 const formpop = document.getElementById("formpop");
+const formpoptype = document.getElementById("formpoptype");
+const buttontype = document.getElementById("submittype");
 let popup = document.querySelector(".popup");
 
 //ดึงกลุ่ม Document
@@ -79,7 +82,35 @@ formFileBack.addEventListener("change", (event) => {
    reader.readAsDataURL(file);
 });
 
-// Function แสดงข้อมูล
+// โหลดรูป frompop
+const popformFileFront = document.getElementById("popformFileFront");
+const popformFileBack = document.getElementById("popformFileBack");
+const popfrontImgPreview = document.getElementById("popfrontImgPreview");
+const popbackImgPreview = document.getElementById("popbackImgPreview");
+
+popformFileFront.addEventListener("change", (event) => {
+   const file = event.target.files[0];
+   const reader = new FileReader();
+
+   reader.addEventListener("load", (event) => {
+      document.getElementById("popfrontImgPreview").style.display = "block";
+      popfrontImgPreview.src = event.target.result;
+   });
+   reader.readAsDataURL(file);
+});
+
+popformFileBack.addEventListener("change", (event) => {
+   const file = event.target.files[0];
+   const reader = new FileReader();
+
+   reader.addEventListener("load", (event) => {
+      document.getElementById("popbackImgPreview").style.display = "block";
+      popbackImgPreview.src = event.target.result;
+   });
+   reader.readAsDataURL(file);
+});
+
+// SHOWDATA PRODUCT //
 function showData(products) {
    // Insert Row
    const row = table_product.insertRow(-1);
@@ -105,7 +136,7 @@ function showData(products) {
    style="cursor: pointer;" onclick="debugBase64('${products.data().Product_FrontImage
       }')" >`;
 
-   //ปุ่มลบ
+   // BUTTON DELETE PRODUCT //
    let btn = document.createElement("button");
    btn.textContent = "ลบข้อมูล";
    btn.setAttribute("class", "btn btn-danger");
@@ -118,15 +149,17 @@ function showData(products) {
          .then(() => {
             alert("ลบข้อมูลเรียบร้อย");
             window.location.href = " Adminproduct.html ";
-         }).catch((error) => { });
+         })
+         .catch((error) => { });
    });
-
+   // BUTTON UPDATE //
    let btnupdate = document.createElement("button");
    btnupdate.textContent = "แก้ไข";
    btnupdate.setAttribute("class", "btn btn-warning");
    btnupdate.setAttribute("data-id", products.id);
    btnupdate.setAttribute("data-Product_Id", products.Product_Id);
    updateCol1.appendChild(btnupdate);
+   // POPUP UPDATE //
    btnupdate.addEventListener("click", (e) => {
       popup.classList.add("active");
       let id = e.target.getAttribute("data-id");
@@ -136,28 +169,43 @@ function showData(products) {
       //  formpop.proid.value = products.data().Product_Id
       formpop.proname.value = products.data().Product_Name;
       formpop.proprice.value = products.data().Product_Point;
-      formpop.protype.value = products.data().Product_Type;
+      formpop.productTypeSelectsPopup.value = products.data().Product_Type;
+      formpop.popfrontImgPreview.src = products.data().Product_FrontImage;
+      formpop.popbackImgPreview.src = products.data().Product_BackImage;
+      document.getElementById("popfrontImgPreview").style.display = "block";
+      document.getElementById("popbackImgPreview").style.display = "block";
    });
 
-   //update
+   // UPDATE PRODUCT //
+   
    popup.addEventListener("submit", (e) => {
       e.preventDefault();
       const docRef = doc(dbproduct, "product", formpop.idproduct.value);
+      const proname = formpop.proname.value
+      const proprice = formpop.proprice.value
+      const protype = formpop.protype.value
+      const imgfont = formpop.popfrontImgPreview.src
+      const imgback = formpop.popbackImgPreview.src
       updateDoc(docRef, {
+         
          // Product_Id:formpop.proid.value,
-         Product_Name: formpop.proname.value,
-         Product_Point: formpop.proprice.value,
-         Product_Type: formpop.protype.value,
+         Product_Name: proname,
+         Product_Point: proprice,
+         Product_Type: protype,
+         Product_FrontImage : imgfont,
+         Product_BackImage : imgback,
       }).then(() => {
-         alert("เพิ่มข้อมูลเรียบร้อย");
          popup.classList.remove("active");
          window.location.href = " Adminproduct.html ";
-      });
+      }).catch(()=>{
+         alert("รูปมีขนาดใหญ่เกินไป");
+         window.location.href = " Adminproduct.html ";
+      })
    });
 }
 
 // Create an initial document to update.
-//ดึงข้อมูล
+//ADD PRODUCT TO FIREBASE//
 form.addEventListener("submit", (e) => {
    e.preventDefault();
    addDoc(collection(dbproduct, "product"), {
@@ -172,18 +220,13 @@ form.addEventListener("submit", (e) => {
    });
 });
 
-//ปิดpopupออก
+//ปิด POPUP UPDATE ออก
 window.addEventListener("click", (e) => {
    if (e.target == popup) {
       popup.classList.remove("active");
    }
 });
 
-async function getProductTypes(dbproduct) {
-   const productCol = collection(dbproduct, "productType");
-   const productSnap = await getDocs(productCol);
-   return productSnap;
-}
 
 const productTypeSelect = document.getElementById("productTypeSelect");
 const productTypes = await getProductTypes(dbproduct);
@@ -192,4 +235,67 @@ productTypes.forEach((productType) => {
    option.text = productType.data().Type_Name;
    option.value = productType.data().Type_Name;
    productTypeSelect.add(option);
+});
+
+
+const productTypeSelectsPopup = document.getElementById("productTypeSelectsPopup");
+const productTypePopup = await getProductTypes(dbproduct);
+productTypePopup.forEach((productType) => {
+   const option = document.createElement("option");
+   option.text = productType.data().Type_Name;
+   option.value = productType.data().Type_Name;
+   productTypeSelectsPopup.add(option);
+});
+
+
+//ดึงกลุ่ม Document
+const datatype = await getProductTypes(dbproduct);
+datatype.forEach((productType) => {
+   showDatatype(productType);
+});
+
+async function getProductTypes(dbproduct) {
+   const productCol = collection(dbproduct, "productType");
+   const productSnap = await getDocs(productCol);
+   return productSnap;
+}
+
+// SHOWTYPEDATA //
+function showDatatype(productType) {
+   // Insert Row
+   const row = table_type.insertRow(-1);
+   const nametypeCol = row.insertCell(0);
+   const deletetype = row.insertCell(1);
+
+   nametypeCol.innerHTML = productType.data().Type_Name;
+   // BUTTON DELETE TYPE //
+   let btn = document.createElement("button");
+   btn.textContent = "ลบข้อมูล";
+   btn.setAttribute("class", "btn btn-danger");
+   btn.setAttribute("data-id", productType.id);
+   deletetype.appendChild(btn);
+   // DELETE TPYE IN FIREBASE //
+   btn.addEventListener("click", (e) => {
+      let id = e.target.getAttribute("data-id");
+      console.log(id);
+      deleteDoc(doc(dbproduct, "productType", id))
+         .then(() => {
+            alert("ลบข้อมูลเรียบร้อย");
+            window.location.href = " Adminproduct.html ";
+         })
+         .catch((error) => { });
+   });
+   
+}
+
+// ADD TYPE TO FIREBASE //
+formpoptype.addEventListener("submit", (e) => {
+   e.preventDefault();
+   addDoc(collection(dbproduct, "productType"), {
+      Type_Name: formpoptype.productType.value,
+      
+   }).then(() => {
+      alert("เพิ่มข้อมูลเรียบร้อย");
+      window.location.href = " Adminproduct.html ";
+   });
 });

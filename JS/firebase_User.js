@@ -36,6 +36,7 @@ data.forEach(users =>{
    showData(users)
 })
 
+// SHOW DATA USERS IN TABLE
 function showData(users){
    const row = table.insertRow(-1)
    const emailCol = row.insertCell(0)
@@ -51,15 +52,15 @@ function showData(users){
    telCol.innerHTML = users.data().User_Tel
    passCol.innerHTML = users.data().User_Point
 
-   //ปุ่มลบ
+   // BUTTON DELTE USER //
    let btn = document.createElement('button')
    btn.textContent="ลบข้อมูล"
    btn.setAttribute('class','btn btn-danger')
    btn.setAttribute('data-id',users.id)
    deleteCol.appendChild(btn)
+   // SOFT DELETE USER IN FIREBASE //
    btn.addEventListener('click',(e)=>{
       let id = e.target.getAttribute('data-id');
-   
       updateDoc(doc(db,'user',id), { deleted: true })
       .then(() => {
          alert("ลบข้อมูลเรียบร้อย")

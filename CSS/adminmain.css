@@ -133,3 +133,86 @@ body {
    cursor: pointer;
    max-width: 100px;
 }
+
+/* POPUPTYPE */
+.popups {
+   position: fixed;
+   inset: 0;
+   background-color: rgba(0, 0, 0, .4);
+   display: none;
+   place-items: center;
+}
+
+.popups.active {
+   display: grid;
+   animation: show .7s ease-in-out;
+}
+
+@keyframes show {
+   0% {
+      transform: translateY(-100%);
+   }
+
+   100% {
+      transform: translateY(0);
+   }
+}
+/* 
+.popups form {
+   background-color: #fff;
+   display: flex;
+   flex-direction: column;
+   max-width: 350px;
+   width: 100%;
+   padding: 50px 20px;
+
+}
+
+.popups form input {
+   width: 100%;
+   background-color: transparent;
+   border: none;
+   box-shadow: inset 0 0 2px rgba(0, 0, 0, .4);
+   margin: 15px 0;
+   padding: 12px 15px;
+   font-size: 1.1rem;
+    
+
+}
+
+.popups form input[type="submit"] {
+   background-color: #009688;
+   color: #fff;
+   cursor: pointer;
+   max-width: 100px;
+} */
+
+
+.popups div {
+   background-color: #fff;
+   display: flex;
+   flex-direction: column;
+   max-width: 350px;
+   width: 100%;
+   padding: 50px 20px;
+
+}
+
+.popups div input{
+   width: 100%;
+   background-color: transparent;
+   border: none;
+   box-shadow: inset 0 0 2px rgba(0, 0, 0, .4);
+   margin: 15px 0;
+   padding: 12px 15px;
+   font-size: 1.1rem;
+   /* font-family: cursive; */
+
+}
+
+.popups div input[type="submit"] {
+   background-color: #009688;
+   color: #fff;
+   cursor: pointer;
+   max-width: 100px;
+}
