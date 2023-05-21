@@ -331,7 +331,6 @@
       const authLoginRegis = document.getElementById("authLoginRegis");
       const authLoginRegisRes = document.getElementById("authLoginRegisRes");
       const logout = document.getElementById("logout");
-      const logoutRes = document.getElementById("logoutRes");
       const adminMenu = document.getElementById("admin-menu");
       const shopMenu = document.getElementById("shop-menu");
 
@@ -383,26 +382,6 @@
                });
             });
       })
-
-      logoutRes.addEventListener("click", (e) => {
-         signOut(auth)
-            .then(() => {
-               swal.fire({
-                  title: "ออกจากระบบสำเร็จ",
-                  icon: "success",
-                  showConfirmButton: false,
-                  timer: 1500
-               });
-            }).catch((err) => {
-               swal.fire({
-                  title: "ออกจากระบบไม่สำเร็จ",
-                  icon: "error",
-                  showConfirmButton: false,
-                  timer: 1500
-               });
-            });
-      })
-
       AOS.init();
    </script>
 

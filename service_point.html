@@ -267,8 +267,19 @@
       const authLoginRegis = document.getElementById("authLoginRegis");
       const authLoginRegisRes = document.getElementById("authLoginRegisRes");
       const logout = document.getElementById("logout");
-      const logoutRes = document.getElementById("logoutRes");
       const adminMenu = document.getElementById("admin-menu");
+      const shopMenu = document.getElementById("shop-menu");
+
+      shopMenu.addEventListener("click", (e) => {
+         e.preventDefault(); // ปิดการทำงานเดิมของลิงก์
+         if (auth.currentUser) {
+            // ผู้ใช้เข้าสู่ระบบแล้ว
+            window.location.href = "shop.html";
+         } else {
+            // ผู้ใช้ยังไม่ได้เข้าสู่ระบบ ให้เด้งไปยังหน้าเข้าสู่ระบบ
+            window.location.href = "login.html";
+         }
+      });
 
       onAuthStateChanged(auth, (user) => {
          if (user && user.email === "nongfilmcry@gmail.com") {
@@ -297,6 +308,8 @@
                   icon: "success",
                   showConfirmButton: false,
                   timer: 1500
+               }).then(() => {
+                  window.location.href = "index.html";
                });
             }).catch((err) => {
                swal.fire({
@@ -307,26 +320,6 @@
                });
             });
       })
-
-      logoutRes.addEventListener("click", (e) => {
-         signOut(auth)
-            .then(() => {
-               swal.fire({
-                  title: "ออกจากระบบสำเร็จ",
-                  icon: "success",
-                  showConfirmButton: false,
-                  timer: 1500
-               });
-            }).catch((err) => {
-               swal.fire({
-                  title: "ออกจากระบบไม่สำเร็จ",
-                  icon: "error",
-                  showConfirmButton: false,
-                  timer: 1500
-               });
-            });
-      })
-
    </script>
 
 

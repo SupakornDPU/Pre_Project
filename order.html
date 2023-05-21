@@ -138,7 +138,6 @@
       const authLoginRegis = document.getElementById("authLoginRegis");
       const authLoginRegisRes = document.getElementById("authLoginRegisRes");
       const logout = document.getElementById("logout");
-      const logoutRes = document.getElementById("logoutRes");
       const adminMenu = document.getElementById("admin-menu");
       const shopMenu = document.getElementById("shop-menu");
 
@@ -180,6 +179,8 @@
                   icon: "success",
                   showConfirmButton: false,
                   timer: 1500
+               }).then(() => {
+                  window.location.href = "index.html";
                });
             }).catch((err) => {
                swal.fire({
@@ -190,26 +191,6 @@
                });
             });
       })
-
-      logoutRes.addEventListener("click", (e) => {
-         signOut(auth)
-            .then(() => {
-               swal.fire({
-                  title: "ออกจากระบบสำเร็จ",
-                  icon: "success",
-                  showConfirmButton: false,
-                  timer: 1500
-               });
-            }).catch((err) => {
-               swal.fire({
-                  title: "ออกจากระบบไม่สำเร็จ",
-                  icon: "error",
-                  showConfirmButton: false,
-                  timer: 1500
-               });
-            });
-      })
-      
    </script>
 
    <!-- SCRIPT -->
@@ -223,5 +204,4 @@
    <!-- Sweetalert -->
    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
-
 </html>
