@@ -108,20 +108,23 @@
             <label for="text" class="form-label ">ชื่อสินค้า</label>
           </div>
           <div class="col-md-3 d-flex justify-content-center align-items-center">
-            <input class="form-control" type="text" name="productname" placeholder="กรุณากรอกชื่อสินค้า">
+            <input class="form-control" type="text" name="productname" placeholder="กรุณากรอกชื่อสินค้า" required
+              pattern="^[a-z]{1,30}$" title="กรอกตัวอักษรเท่านั้น">
           </div>
           <div class="col-md-1 d-flex justify-content-center align-items-center">
             <label for="text" class="form-label">ราคา</label>
           </div>
           <div class="col-md-3 d-flex justify-content-center align-items-center">
-            <input class="form-control" type="text" name="productpoint" placeholder="กรุณากรอกราคา">
+            <input class="form-control" type="text" name="productpoint" placeholder="กรุณากรอกราคา" required
+              pattern="^\d{1,8}$" title="กรอกตัวเลขเท่านั้น">
           </div>
           <div class="col-md-1 d-flex justify-content-center align-items-center">
             <label for="text" class="form-label">ประเภทสินค้า</label>
           </div>
 
           <div class="col-md-3 d-flex justify-content-center align-items-center">
-            <select class="form-select" aria-label="ประเภทสินค้า" name="productTypeSelect" id="productTypeSelect">
+            <select class="form-select" aria-label="ประเภทสินค้า" name="productTypeSelect" id="productTypeSelect"
+              requiredtitle="กรูณาเลือกประเภทสินค้า">
               <option value="" disabled selected>เลือกประเภทสินค้า</option>
               <!-- <option value="Shirt">Shirt</option>
               <option value="Coupon">Coupon</option>

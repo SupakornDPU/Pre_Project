@@ -51,7 +51,8 @@
    <navbar-component></navbar-component>
 
    <!-- Sidebar on small screens when clicking the menu icon -->
-   <nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-large" style="display:none;margin-top: -250px;" id="mySidebar">
+   <nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-large"
+      style="display:none;margin-top: -250px;" id="mySidebar">
       <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close×</a>
       <a href="index.html" onclick="w3_close()" class="w3-bar-item w3-button">HOME</a>
       <a href="shop.html" onclick="w3_close()" class="w3-bar-item w3-button">SHOP</a>
@@ -59,12 +60,15 @@
       <hr>
       <div id="authLoginRegisRes">
          <a href="login.html" onclick="w3_close()" class="w3-bar-item w3-button"><i class="fa fa-user"></i> LOGIN</a>
-         <a href="register.html" onclick="w3_close()" class="w3-bar-item w3-button"><i class="fa fa-user"></i>REGISTER</a>
+         <a href="register.html" onclick="w3_close()" class="w3-bar-item w3-button"><i
+               class="fa fa-user"></i>REGISTER</a>
       </div>
       <div id="profileRes" style="display:none">
          <a href="login.html" onclick="w3_close()" class="w3-bar-item w3-button"><i class="bi bi-cart-fill"></i>CART</a>
-         <a href="#" onclick="w3_close()" class="w3-bar-item w3-button" id="logoutRes"><i class="fa fa-user"></i>LOGOUT</a>
-         <a href="register.html" onclick="w3_close()" class="w3-bar-item w3-button"><i class="fa fa-user"></i>PROFILE</a>
+         <a href="#" onclick="w3_close()" class="w3-bar-item w3-button" id="logoutRes"><i
+               class="fa fa-user"></i>LOGOUT</a>
+         <a href="register.html" onclick="w3_close()" class="w3-bar-item w3-button"><i
+               class="fa fa-user"></i>PROFILE</a>
       </div>
    </nav>
 
@@ -101,8 +105,8 @@
             <div class="col-md-4">
                <div class="form-outline mb-4">
                   <label class="mb-2" for="typeFirstName">FIRST NAME</label>
-                  <input type="text" id="typeFirstName" class="form-control form-control-lg" name="firstname"
-                     required />
+                  <input type="text" id="typeFirstName" class="form-control form-control-lg" name="firstname" required
+                     pattern="^[a-z]{1,30}$" title="กรอกภาษาอังกฤษเท่านั้น" />
                </div>
             </div>
          </div>
@@ -112,7 +116,8 @@
             <div class="col-md-4">
                <div class="form-outline mb-4">
                   <label class="mb-2" for="typeLastName">LAST NAME</label>
-                  <input type="text" id="typeLastName" class="form-control form-control-lg" name="lastname" required />
+                  <input type="text" id="typeLastName" class="form-control form-control-lg" name="lastname" required
+                     pattern="^[a-z]{1,30}$" title="กรอกภาษาอังกฤษเท่านั้น" />
                </div>
             </div>
          </div>
@@ -122,7 +127,8 @@
             <div class="col-md-4">
                <div class="form-outline mb-4">
                   <label class="mb-2" for="typePhone">PHONE</label>
-                  <input type="text" id="typePhone" class="form-control form-control-lg" name="phone" required />
+                  <input type="text" id="typePhone" class="form-control form-control-lg" name="phone" required
+                     pattern="^0{1}\d{2}\d{3}\d{4}$" title="กรอกเบอร์โทรไม่ถูกต้อง" />
                </div>
             </div>
          </div>
@@ -136,7 +142,8 @@
             </div>
          </div>
          <!-- Button -->
-         <input type="text" id="point" class="form-control form-control-lg" style="display: none;" name="point" value="0" required disabled/>
+         <input type="text" id="point" class="form-control form-control-lg" style="display: none;" name="point"
+            value="0" required disabled />
       </form>
    </div>
    <!-- !Form Login -->
