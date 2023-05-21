@@ -16,7 +16,7 @@ class NavBar extends HTMLElement {
             </div>
             <div class="w3-hide-small w3-hide-medium" style="padding-left: 200px;">
                <a href="index.html" class="w3-bar-item w3-button"><i class="bi bi-house-door-fill"></i> HOME</a>
-               <a href="shop.html" class="w3-bar-item w3-button"><i class="bi bi-bag-fill"></i> SHOP</a>
+               <a href="shop.html" class="w3-bar-item w3-button" id="shop-menu" ><i class="bi bi-bag-fill"></i> SHOP</a>
                <a href="service_point.html" class="w3-bar-item w3-button"><i class="fa fa-th"></i> SERVICE POINT</a>
                <a href="#contact" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i> CONTACT</a>
             </div>

@@ -79,6 +79,30 @@
    <!-- !Navbar -->
    <navbar-component></navbar-component>
 
+   <!-- Sidebar on small screens when clicking the menu icon -->
+   <nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-large"
+      style="display:none;margin-top: -100px;" id="mySidebar">
+      <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close
+         ×</a>
+      <a href="index.html" onclick="w3_close()" class="w3-bar-item w3-button">HOME</a>
+      <a href="shop.html" onclick="w3_close()" class="w3-bar-item w3-button">SHOP</a>
+      <a href="service_point.html" onclick="w3_close()" class="w3-bar-item w3-button">SERVICEPOINT</a>
+      <hr>
+      <div id="authLoginRegisRes">
+         <a href="login.html" onclick="w3_close()" class="w3-bar-item w3-button"><i class="fa fa-user"></i> LOGIN</a>
+         <a href="register.html" onclick="w3_close()" class="w3-bar-item w3-button"><i class="fa fa-user"></i>
+            REGISTER</a>
+      </div>
+      <div id="profileRes" style="display:none">
+         <a href="login.html" onclick="w3_close()" class="w3-bar-item w3-button"><i class="bi bi-cart-fill"></i>
+            CART</a>
+         <a href="#" onclick="w3_close()" class="w3-bar-item w3-button" id="logoutRes"><i class="fa fa-user"></i>
+            LOGOUT</a>
+         <a href="register.html" onclick="w3_close()" class="w3-bar-item w3-button"><i class="fa fa-user"></i>
+            PROFILE</a>
+      </div>
+   </nav>
+
    <!-- !Content -->
    <div class="container page-content">
       <form id="payment">
@@ -159,7 +183,8 @@
                      <a href="product_1.html">Return To Product</a>
                   </div>
                   <div class="col-7 col-md-6 text-end">
-                     <button class="btn btn-redeem btn-lg btn-block"  type="submit" id="redeem">Continue to shiping</button>
+                     <button class="btn btn-redeem btn-lg btn-block" type="submit" id="redeem">Continue to
+                        shiping</button>
                   </div>
                </div>
             </div>
@@ -182,13 +207,13 @@
          document.getElementById("amount").innerHTML = "Amount : " + localStorage.getItem("amount");
          document.getElementById("total").innerHTML = "Total : " + localStorage.getItem("total");
       }
-      
+
    </script>
 
    <script type="module">
       import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
-      import { getFirestore , collection , getDocs , deleteDoc , addDoc ,doc} from "https://www.gstatic.com/firebasejs/9.19.1/firebase-firestore.js";
-      import { getAuth, deleteUser ,createUserWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-auth.js";
+      import { getFirestore, collection, getDocs, deleteDoc, addDoc, doc } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-firestore.js";
+      import { getAuth, deleteUser, createUserWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-auth.js";
 
       const firebaseConfig = {
          apiKey: "AIzaSyCODow7HLMRU3ik_9glYxoxjE2R6prKjq8",
@@ -223,9 +248,15 @@
             Order_Product_Image: paymentImg.src,
 
          }).then(() => {
-            alert("เพิ่มข้อมูลเรียบร้อย");
-            localStorage.clear();
-            window.location.href = " order.html ";
+            swal.fire({
+               title: "สั่งซื้อเสร็จสิ้น",
+               icon: "success",
+               showConfirmButton: false,
+               timer: 1500
+            }).then(() => {
+               window.location.href = "order.html";
+               localStorage.clear();
+            });
          });
       });
    </script>
@@ -238,6 +269,9 @@
       crossorigin="anonymous"></script>
    <script src="component/component.js"></script>
    <script src="JS/script.js"></script>
+
+   <!-- Sweetalert -->
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>

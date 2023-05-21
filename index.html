@@ -98,7 +98,6 @@
       }
    </style>
 </head>
-<!-- b29f82 -->
 
 <body>
    <!-- !Navbar -->
@@ -107,8 +106,7 @@
    <!-- Sidebar on small screens when clicking the menu icon -->
    <nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-large" style="display:none;"
       id="mySidebar">
-      <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close
-         ×</a>
+      <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close×</a>
       <a href="index.html" onclick="w3_close()" class="w3-bar-item w3-button">HOME</a>
       <a href="shop.html" onclick="w3_close()" class="w3-bar-item w3-button">SHOP</a>
       <a href="service_point.html" onclick="w3_close()" class="w3-bar-item w3-button">SERVICEPOINT</a>
@@ -335,6 +333,18 @@
       const logout = document.getElementById("logout");
       const logoutRes = document.getElementById("logoutRes");
       const adminMenu = document.getElementById("admin-menu");
+      const shopMenu = document.getElementById("shop-menu");
+
+      shopMenu.addEventListener("click", (e) => {
+         e.preventDefault(); // ปิดการทำงานเดิมของลิงก์
+         if (auth.currentUser) {
+            // ผู้ใช้เข้าสู่ระบบแล้ว
+            window.location.href = "shop.html";
+         } else {
+            // ผู้ใช้ยังไม่ได้เข้าสู่ระบบ ให้เด้งไปยังหน้าเข้าสู่ระบบ
+            window.location.href = "login.html";
+         }
+      });
 
       onAuthStateChanged(auth, (user) => {
          if (user && user.email === "nongfilmcry@gmail.com") {

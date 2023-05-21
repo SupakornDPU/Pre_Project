@@ -171,7 +171,7 @@
             </tr>
           </thead>
           <tbody id="tbody">
-            
+
           </tbody>
         </table>
       </div>
@@ -206,20 +206,20 @@
   <!-- POPUP -->
   <div class="popups type">
     <div>
-    <form action="" id="formpoptype">  
-      <input type="text" placeholder="name" name="idproduct" style="display: none;">
-      <label for="text" class="form-label">ชื่อประเภทสินค้า</label>
-      <input type="text" placeholder="name" name="productType" required>
-      <input type="submit" value="บันทึก" id="submittype" >
-    </form>
-    <table class="table table-dark mb-5 text-center display" id="tabletype">
-      <thead>
-        <tr>
-          <th class="text-center">ประเภทสินค้า</th>
-          <th class="text-center"></th>
-        </tr>
-      </thead>
-    </table>
+      <form action="" id="formpoptype">
+        <input type="text" placeholder="name" name="idproduct" style="display: none;">
+        <label for="text" class="form-label">ชื่อประเภทสินค้า</label>
+        <input type="text" placeholder="name" name="productType" required>
+        <input type="submit" value="บันทึก" id="submittype">
+      </form>
+      <table class="table table-dark mb-5 text-center display" id="tabletype">
+        <thead>
+          <tr>
+            <th class="text-center">ประเภทสินค้า</th>
+            <th class="text-center"></th>
+          </tr>
+        </thead>
+      </table>
     </div>
   </div>
 
@@ -241,23 +241,23 @@
       win.document.write('<iframe src="' + base64URL + '" frameborder="0" style="border:0; top:0px; left:0px; bottom:0px; right:0px; width:100%; height:100%;" allowfullscreen></iframe>');
     }
 
-    function popupupdate(){
-      
+    function popupupdate() {
+
       popuptype.classList.add("active");
     }
-    
+
     //ปิด POPUP TYPE ออก
     const productType = document.getElementById("productType");
     let popuptype = document.querySelector(".popups");
     window.addEventListener("click", (e) => {
-    if (e.target == popuptype) {
-      
-      document.getElementById("formpoptype").reset();
-      popuptype.classList.remove("active");
-      
-    }
+      if (e.target == popuptype) {
+
+        document.getElementById("formpoptype").reset();
+        popuptype.classList.remove("active");
+
+      }
     });
-      
+
   </script>
 
   <script src="JS/firebase_Product.js" type="module"></script>

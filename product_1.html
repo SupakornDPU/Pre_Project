@@ -138,8 +138,8 @@
    <navbar-component></navbar-component>
 
    <!-- Sidebar on small screens when clicking the menu icon -->
-   <nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-large" style="display:none;"
-      id="mySidebar">
+   <nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-large"
+      style="display:none;margin-top: -100px;" id="mySidebar">
       <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close
          ×</a>
       <a href="index.html" onclick="w3_close()" class="w3-bar-item w3-button">HOME</a>
@@ -406,13 +406,14 @@
                });
             });
       })
+   </script>
 
+   <script>
       // Change Image
       function changeImage(fileName) {
          let img = document.querySelector("#bannerImage");
          img.setAttribute("src", fileName);
       }
-
    </script>
 
    <!-- SCRIPT -->

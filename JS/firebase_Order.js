@@ -75,8 +75,14 @@ function showData(orders){
          
             deleteDoc(doc(dborder,'order',id))
             .then(() => {
-               alert("ลบข้อมูลเรียบร้อย")
-               window.location.href = "order.html"
+               swal.fire({
+                  title: "ลบออเดอร์เรียบร้อยแล้ว",
+                  icon: "success",
+                  showConfirmButton: false,
+                  timer: 1000
+               }).then(() => {
+                  window.location.href = "order.html"
+               });
             }).catch((error) => {
             
             });

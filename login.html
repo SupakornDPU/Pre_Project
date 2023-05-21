@@ -180,16 +180,6 @@
          }
       });
 
-      // onAuthStateChanged(auth, (user) => {
-      //    if (user) {
-      //       profile.style.display = "block";
-      //       authLoginRegis.style.display = "none";
-      //    } else {
-      //       profile.style.display = "none";
-      //       authLoginRegis.style.display = "block";
-      //    }
-      // });
-
       logout.addEventListener("click", (e) => {
          signOut(auth)
             .then(() => {
