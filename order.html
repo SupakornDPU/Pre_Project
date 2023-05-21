@@ -116,6 +116,102 @@
    <!-- !Footer -->
    <footer-component></footer-component>
 
+   <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
+      import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-auth.js";
+
+      const firebaseConfig = {
+         apiKey: "AIzaSyCODow7HLMRU3ik_9glYxoxjE2R6prKjq8",
+         authDomain: "recycle-machine-23716.firebaseapp.com",
+         projectId: "recycle-machine-23716",
+         storageBucket: "recycle-machine-23716.appspot.com",
+         messagingSenderId: "715253109818",
+         appId: "1:715253109818:web:8dae7aa5ed3ada676e1103",
+         measurementId: "G-DEQYWJ115S"
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const auth = getAuth(app);
+      const profile = document.getElementById("profile");
+      const profileRes = document.getElementById("profileRes");
+      const authLoginRegis = document.getElementById("authLoginRegis");
+      const authLoginRegisRes = document.getElementById("authLoginRegisRes");
+      const logout = document.getElementById("logout");
+      const logoutRes = document.getElementById("logoutRes");
+      const adminMenu = document.getElementById("admin-menu");
+      const shopMenu = document.getElementById("shop-menu");
+
+      shopMenu.addEventListener("click", (e) => {
+         e.preventDefault(); // ปิดการทำงานเดิมของลิงก์
+         if (auth.currentUser) {
+            // ผู้ใช้เข้าสู่ระบบแล้ว
+            window.location.href = "shop.html";
+         } else {
+            // ผู้ใช้ยังไม่ได้เข้าสู่ระบบ ให้เด้งไปยังหน้าเข้าสู่ระบบ
+            window.location.href = "login.html";
+         }
+      });
+
+      onAuthStateChanged(auth, (user) => {
+         if (user && user.email === "nongfilmcry@gmail.com") {
+            // User is signed in and has the admin email address
+            adminMenu.style.display = "block";
+         } if (user) {
+            profile.style.display = "block";
+            authLoginRegis.style.display = "none";
+            profileRes.style.display = "block";
+            authLoginRegisRes.style.display = "none";
+
+         } else {
+            profile.style.display = "none";
+            profileRes.style.display = "none";
+            adminMenu.style.display = "none";
+            authLoginRegisRes.style.display = "block";
+            authLoginRegis.style.display = "block";
+         }
+      });
+
+      logout.addEventListener("click", (e) => {
+         signOut(auth)
+            .then(() => {
+               swal.fire({
+                  title: "ออกจากระบบสำเร็จ",
+                  icon: "success",
+                  showConfirmButton: false,
+                  timer: 1500
+               });
+            }).catch((err) => {
+               swal.fire({
+                  title: "ออกจากระบบไม่สำเร็จ",
+                  icon: "error",
+                  showConfirmButton: false,
+                  timer: 1500
+               });
+            });
+      })
+
+      logoutRes.addEventListener("click", (e) => {
+         signOut(auth)
+            .then(() => {
+               swal.fire({
+                  title: "ออกจากระบบสำเร็จ",
+                  icon: "success",
+                  showConfirmButton: false,
+                  timer: 1500
+               });
+            }).catch((err) => {
+               swal.fire({
+                  title: "ออกจากระบบไม่สำเร็จ",
+                  icon: "error",
+                  showConfirmButton: false,
+                  timer: 1500
+               });
+            });
+      })
+      
+   </script>
+
    <!-- SCRIPT -->
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
